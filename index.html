@@ -3,119 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iris 7 | Solutions de Gestion Ultime</title>
+    <title>Iris 7 | Streetwear & Mode</title>
     <link href="https://googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #070a13; color: white; overflow-x: hidden; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #050505; color: white; overflow-x: hidden; }
 
-        /* Background & Loader */
-        #particles-js { position: fixed; width: 100%; height: 100%; z-index: -1; top: 0; left: 0; }
-        .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #8a2be2, #da70d6); z-index: 9999; animation: curtainReveal 1.2s cubic-bezier(1, 0, 0, 1) forwards; }
+        /* Loader Rideau */
+        .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #8a2be2; z-index: 9999; animation: curtainReveal 1s cubic-bezier(1, 0, 0, 1) forwards 0.5s; }
         @keyframes curtainReveal { 0% { transform: scaleY(1); } 100% { transform: scaleY(0); } }
 
-        /* Nav */
-        nav { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1200px; padding: 15px 35px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; backdrop-filter: blur(20px); background: rgba(255, 255, 255, 0.05); border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .logo { font-weight: 800; font-size: 1.5rem; color: #8a2be2; text-decoration: none; }
+        /* Nav Pilule */
+        nav { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1100px; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; backdrop-filter: blur(20px); background: rgba(255, 255, 255, 0.03); border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .logo { font-weight: 800; font-size: 1.5rem; color: #8a2be2; text-decoration: none; letter-spacing: -1px; }
 
-        /* Typography */
-        section { min-height: 100vh; padding: 120px 10% 60px; display: flex; flex-direction: column; justify-content: center; }
-        h1 { font-size: clamp(3rem, 10vw, 6rem); font-weight: 800; line-height: 0.9; margin-bottom: 20px; }
-        .gradient-text { background: linear-gradient(180deg, #fff 30%, #8a2be2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        section { min-height: 100vh; padding: 120px 8% 60px; }
+        h1 { font-size: clamp(3.5rem, 12vw, 7rem); font-weight: 800; line-height: 0.85; letter-spacing: -3px; margin-bottom: 30px; }
+        .purple-gradient { background: linear-gradient(to bottom, #fff, #8a2be2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        /* Cards Grid */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 60px; perspective: 1000px; }
-        .card { background: rgba(17, 24, 39, 0.8); border-radius: 32px; padding: 35px; border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.3s; transform-style: preserve-3d; }
-        .card:hover { border-color: #8a2be2; box-shadow: 0 40px 80px rgba(138, 43, 226, 0.3); }
+        /* Grille Mode */
+        .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 50px; }
         
-        .icon { font-size: 3rem; margin-bottom: 20px; display: block; }
-        h3 { font-size: 1.5rem; margin-bottom: 15px; color: #fff; }
-        p { font-size: 0.95rem; opacity: 0.7; line-height: 1.6; }
-        .price { color: #da70d6; font-weight: 800; font-size: 1.2rem; margin-top: 20px; display: block; }
+        .product-card { 
+            background: #111; border-radius: 20px; overflow: hidden; 
+            transition: 0.6s cubic-bezier(0.2, 1, 0.2, 1); position: relative;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .product-card:hover { transform: translateY(-15px); border-color: #8a2be2; box-shadow: 0 30px 60px rgba(138, 43, 226, 0.2); }
 
-        .btn { display: inline-block; padding: 18px 45px; background: #8a2be2; color: white; text-decoration: none; border-radius: 100px; font-weight: 800; margin-top: 40px; transition: 0.4s; }
-        .btn:hover { transform: scale(1.1); box-shadow: 0 0 40px rgba(138, 43, 226, 0.6); }
+        .img-container { width: 100%; height: 350px; overflow: hidden; background: #1a1a1a; }
+        .product-img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
+        .product-card:hover .product-img { transform: scale(1.1); }
+
+        .details { padding: 20px; text-align: center; }
+        .category { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #8a2be2; margin-bottom: 5px; display: block; }
+        .name { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+        .price { font-weight: 800; font-size: 1.1rem; color: #fff; background: rgba(138, 43, 226, 0.15); padding: 5px 15px; border-radius: 50px; display: inline-block; }
+
+        .btn-buy { display: block; margin-top: 15px; padding: 12px; background: #fff; color: #000; text-decoration: none; border-radius: 12px; font-weight: 800; transition: 0.3s; }
+        .btn-buy:hover { background: #8a2be2; color: #fff; }
     </style>
 </head>
 <body>
-    <div id="particles-js"></div>
     <div class="loader"></div>
 
     <nav>
         <a href="#" class="logo">IRIS 7</a>
         <div style="display: flex; gap: 20px;">
-            <a href="#produits" style="color: white; text-decoration: none; font-weight: 600;">Catalogue</a>
-            <a href="https://odoo.com" style="color: #da70d6; text-decoration: none; font-weight: 800;">Odoo Direct</a>
+            <a href="#collection" style="color: white; text-decoration: none; font-weight: 600; font-size: 0.8rem;">COLLECTION</a>
+            <a href="https://odoo.com" style="color: #8a2be2; text-decoration: none; font-weight: 800; font-size: 0.8rem;">BOUTIQUE ODOO</a>
         </div>
     </nav>
 
-    <section id="accueil">
-        <h1 data-aos="zoom-out-up"><span class="gradient-text">TOUT IRIS 7</span><br>DANS UNE APP.</h1>
-        <p data-aos="fade-right" data-aos-delay="400" style="font-size: 1.5rem; opacity: 0.7; max-width: 600px;">La boutique officielle Skilipo-web. Retrouvez tous nos modules de vente et de gestion automatisée.</p>
-        <div data-aos="fade-up" data-aos-delay="600">
-            <a href="#produits" class="btn">Voir les articles</a>
+    <section>
+        <h1 data-aos="fade-up"><span class="purple-gradient">DROP 01</span><br>IRIS 7 WEAR.</h1>
+        <p data-aos="fade-up" data-aos-delay="200" style="max-width: 500px; opacity: 0.5; font-size: 1.1rem;">La nouvelle collection exclusive Iris 7. Qualité premium, design futuriste. Disponible maintenant.</p>
+    </section>
+
+    <section id="collection">
+        <h2 style="font-size: 3rem; margin-bottom: 40px;" data-aos="fade-right">Articles Récents</h2>
+        <div class="shop-grid">
+            
+            <!-- T-Shirt -->
+            <div class="product-card" data-aos="fade-up">
+                <div class="img-container">
+                    <img src="https://unsplash.com" class="product-img">
+                </div>
+                <div class="details">
+                    <span class="category">T-Shirt</span>
+                    <p class="name">Iris 7 Oversize Black</p>
+                    <span class="price">199 DH</span>
+                    <a href="https://odoo.com" class="btn-buy">Acheter sur Odoo</a>
+                </div>
+            </div>
+
+            <!-- Chaussures -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="img-container">
+                    <img src="https://unsplash.com" class="product-img">
+                </div>
+                <div class="details">
+                    <span class="category">Shoes</span>
+                    <p class="name">Iris Speed Runner</p>
+                    <span class="price">850 DH</span>
+                    <a href="https://odoo.com" class="btn-buy">Acheter sur Odoo</a>
+                </div>
+            </div>
+
+            <!-- Maillot -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="img-container">
+                    <img src="https://unsplash.com" class="product-img">
+                </div>
+                <div class="details">
+                    <span class="category">Jersey</span>
+                    <p class="name">Maillot Officiel Iris 7</p>
+                    <span class="price">350 DH</span>
+                    <a href="https://odoo.com" class="btn-buy">Acheter sur Odoo</a>
+                </div>
+            </div>
+
+            <!-- Casquette -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="img-container">
+                    <img src="https://unsplash.com" class="product-img">
+                </div>
+                <div class="details">
+                    <span class="category">Accessoires</span>
+                    <p class="name">Casquette Iris Logo</p>
+                    <span class="price">120 DH</span>
+                    <a href="https://odoo.com" class="btn-buy">Acheter sur Odoo</a>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <section id="produits">
-        <h2 style="font-size: 3.5rem;" data-aos="fade-right">Nos Articles & Services</h2>
-        <div class="grid">
-            <!-- Article 1 -->
-            <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <span class="icon">💼</span>
-                <h3>Module CRM & Ventes</h3>
-                <p>Suivez vos prospects et gérez vos devis en un clic. Synchronisation totale avec Iris 7.</p>
-                <span class="price">250 DH / mois</span>
-            </div>
-            <!-- Article 2 -->
-            <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <span class="icon">📦</span>
-                <h3>Gestion de Stock Pro</h3>
-                <p>Inventaire automatisé avec alertes de rupture et gestion multi-entrepôts.</p>
-                <span class="price">Sur Devis</span>
-            </div>
-            <!-- Article 3 -->
-            <div class="card" data-aos="fade-up" data-aos-delay="300">
-                <span class="icon">🧾</span>
-                <h3>Facturation Express</h3>
-                <p>Émettez vos factures conformes instantanément et suivez vos paiements.</p>
-                <span class="price">150 DH / mois</span>
-            </div>
-            <!-- Article 4 -->
-            <div class="card" data-aos="fade-up" data-aos-delay="400">
-                <span class="icon">🖥️</span>
-                <h3>Site Web & E-commerce</h3>
-                <p>Création de votre boutique en ligne liée directement à votre gestion Iris.</p>
-                <span class="price">1200 DH / an</span>
-            </div>
-            <!-- Article 5 -->
-            <div class="card" data-aos="fade-up" data-aos-delay="500">
-                <span class="icon">🛡️</span>
-                <h3>Cybersécurité Skilipo</h3>
-                <p>Protection de vos données et sauvegardes quotidiennes sur serveurs sécurisés.</p>
-                <span class="price">450 DH / an</span>
-            </div>
-            <!-- Article 6 -->
-            <div class="card" data-aos="fade-up" data-aos-delay="600">
-                <span class="icon">🚀</span>
-                <h3>Support & Formation</h3>
-                <p>Accompagnement personnalisé pour maîtriser l'écosystème Iris 7.</p>
-                <span class="price">Gratuit</span>
-            </div>
-        </div>
-    </section>
-
-    <script src="https://cloudflare.com"></script>
-    <script src="https://jsdelivr.net"></script>
     <script src="https://cloudflare.com"></script>
     <script>
         AOS.init({ duration: 1000, once: false });
-        particlesJS("particles-js", { "particles": { "number": { "value": 60 }, "color": { "value": "#8a2be2" }, "shape": { "type": "circle" }, "opacity": { "value": 0.3 }, "size": { "value": 3 }, "line_linked": { "enable": true, "distance": 150, "color": "#8a2be2", "opacity": 0.2, "width": 1 }, "move": { "enable": true, "speed": 1.5 } }, "interactivity": { "events": { "onhover": { "enable": true, "mode": "grab" } } } });
-        VanillaTilt.init(document.querySelectorAll(".card"), { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
     </script>
 </body>
 </html>
+
 
 
 
