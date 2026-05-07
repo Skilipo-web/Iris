@@ -5,170 +5,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IRIS 7 | L'Empire de Mokhtari Jad</title>
     <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #050505; color: white; overflow-x: hidden; }
 
-        /* Animation de fond (Particules) */
-        #bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.3; }
+        /* Loader Cinématique */
+        .loader { position: fixed; inset: 0; background: #8a2be2; z-index: 9999; animation: slideOut 1.2s cubic-bezier(1, 0, 0, 1) forwards 0.8s; }
+        @keyframes slideOut { to { transform: translateY(-100%); } }
 
-        /* Navigation Style Luxe */
-        nav { position: fixed; top: 0; width: 100%; padding: 25px 8%; display: flex; justify-content: space-between; align-items: center; background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid #8a2be2; }
-        .logo { font-size: 1.8rem; font-weight: 800; color: #8a2be2; text-decoration: none; letter-spacing: 2px; }
+        /* Nav Pilule Futuriste */
+        nav { 
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
+            width: 90%; max-width: 1200px; padding: 15px 40px; 
+            display: flex; justify-content: space-between; align-items: center; 
+            z-index: 1000; backdrop-filter: blur(30px); 
+            background: rgba(255, 255, 255, 0.03); border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .logo { font-weight: 800; font-size: 1.8rem; color: #8a2be2; text-decoration: none; text-shadow: 0 0 15px #8a2be255; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 0.8rem; transition: 0.4s; }
+        .nav-links a:hover { color: #8a2be2; }
 
-        /* Hero Section Impactante */
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 10%; background: radial-gradient(circle at 70% 30%, #1a0b2e 0%, #050505 100%); }
-        .hero h1 { font-size: clamp(3rem, 10vw, 8rem); font-weight: 800; line-height: 0.9; animation: slideIn 1s ease-out; }
-        .hero span { color: #8a2be2; }
-        .hero p { font-size: 1.5rem; opacity: 0.6; margin-top: 20px; animation: fadeIn 2s ease-in; }
+        /* Hero Section */
+        section { min-height: 100vh; padding: 140px 10% 80px; display: flex; flex-direction: column; justify-content: center; }
+        h1 { font-size: clamp(3.5rem, 12vw, 8rem); font-weight: 800; line-height: 0.8; letter-spacing: -5px; }
+        .grad-text { background: linear-gradient(to bottom, #fff, #8a2be2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        /* Catalogue d'Articles Organisé */
-        .container { padding: 100px 10%; }
-        .section-title { font-size: 3rem; font-weight: 800; margin-bottom: 60px; text-align: center; color: #8a2be2; text-transform: uppercase; letter-spacing: 5px; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        /* Boutique / Grille de Produits (T-shirt, Pantalon, Sweat, Accessoires) */
+        .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 60px; }
+        .card { 
+            background: #111; border-radius: 30px; overflow: hidden; 
+            border: 1px solid rgba(255,255,255,0.05); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+        .card:hover { transform: translateY(-20px); border-color: #8a2be2; box-shadow: 0 40px 100px rgba(138, 43, 226, 0.3); }
 
-        /* Cartes Articles Animées */
-        .card { background: #111; border-radius: 30px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .card:hover { transform: translateY(-20px) scale(1.02); border-color: #8a2be2; box-shadow: 0 30px 60px rgba(138, 43, 226, 0.3); }
-        
-        .img-box { width: 100%; height: 400px; background: linear-gradient(45deg, #111, #1a1a1a); position: relative; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(20%); transition: 0.5s; }
-        .card:hover img { filter: grayscale(0%); transform: scale(1.05); }
+        .img-box { width: 100%; height: 450px; overflow: hidden; position: relative; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .card:hover .img-box img { transform: scale(1.15); }
 
-        .info { padding: 30px; }
-        .info h3 { font-size: 1.6rem; margin-bottom: 15px; font-weight: 800; }
-        .info p { font-size: 0.95rem; opacity: 0.5; line-height: 1.6; margin-bottom: 25px; min-height: 70px; }
-        .p-footer { display: flex; justify-content: space-between; align-items: center; }
-        .price { font-size: 1.5rem; font-weight: 800; color: #8a2be2; }
-        .buy-btn { background: #8a2be2; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 800; transition: 0.3s; font-size: 0.8rem; }
-        .buy-btn:hover { background: white; color: #8a2be2; box-shadow: 0 0 20px #fff; }
+        .details { padding: 30px; }
+        .cat { font-size: 0.7rem; font-weight: 800; color: #8a2be2; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .price { font-size: 1.5rem; font-weight: 800; margin-top: 15px; display: block; }
 
-        /* Animations */
-        @keyframes slideIn { from { transform: translateX(-100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 0.6; } }
+        /* Section CEO */
+        .ceo-box { display: flex; align-items: center; gap: 60px; background: #080808; padding: 80px; border-radius: 50px; border: 1px solid rgba(138, 43, 226, 0.2); }
+        .ceo-img { width: 300px; height: 300px; border-radius: 50%; border: 4px solid #8a2be2; box-shadow: 0 0 30px #8a2be244; }
 
-        /* Footer */
-        footer { padding: 80px 10%; text-align: center; background: #080808; border-top: 1px solid rgba(255,255,255,0.05); }
-        .contact-mail { font-size: 1.5rem; color: #8a2be2; text-decoration: none; font-weight: 700; }
+        /* Contact & Footer */
+        .btn-empire { display: inline-block; padding: 20px 60px; background: #8a2be2; color: white; border-radius: 100px; text-decoration: none; font-weight: 800; transition: 0.4s; margin-top: 40px; }
+        .btn-empire:hover { transform: scale(1.1); box-shadow: 0 0 50px #8a2be2; }
+
+        @media (max-width: 900px) { .ceo-box { flex-direction: column; text-align: center; } }
     </style>
 </head>
 <body>
-
-    <canvas id="bg"></canvas>
+    <div class="loader"></div>
 
     <nav>
         <a href="#" class="logo">IRIS 7</a>
         <div class="nav-links">
-            <a href="#collection" style="color: white; text-decoration: none; margin-left: 25px;">COLLECTION</a>
-            <a href="#contact" style="color: white; text-decoration: none; margin-left: 25px;">CONTACT</a>
+            <a href="#collection">COLLECTION</a>
+            <a href="#ceo">MOKHTARI JAD</a>
+            <a href="#contact">CONTACT</a>
         </div>
     </nav>
 
-    <section class="hero">
-        <h1>MOKHTARI<br><span>JAD.</span></h1>
-        <p>Le fondateur de l'Empire IRIS 7 & Skilipo-web.</p>
+    <section id="hero">
+        <h1 data-aos="fade-right"><span class="grad-text">L'EMPIRE</span><br>DU MARKETING.</h1>
+        <p data-aos="fade-up" data-aos-delay="400" style="font-size: 1.5rem; opacity: 0.5; max-width: 600px; margin-top: 40px;">
+            La vision exclusive de <strong>Mokhtari Jad</strong>. Découvrez la collection ultime : T-shirts, Pants, Sweats & Accessoires.
+        </p>
     </section>
 
-    <div id="collection" class="container">
-        <h2 class="section-title">Catalogue IRIS</h2>
-        <div class="product-grid">
-            
-            <!-- ARTICLE 1 -->
-            <div class="card">
-                <div class="img-box">
-                    <img src="https://unsplash.com" alt="T-shirt">
-                </div>
-                <div class="info">
-                    <h3>T-Shirt Signature</h3>
-                    <p>Coton premium 240g, coupe oversize. Logo Iris 7 brodé main. L'élégance du fondateur dans chaque fibre.</p>
-                    <div class="p-footer">
-                        <span class="price">220 DH</span>
-                        <a href="https://wa.me" class="buy-btn">COMMANDER</a>
-                    </div>
+    <section id="collection">
+        <h2 style="font-size: 4rem; font-weight: 800; margin-bottom: 20px;" data-aos="fade-up">Boutique Officielle</h2>
+        <div class="shop-grid">
+            <!-- T-SHIRT -->
+            <div class="card" data-aos="fade-up">
+                <div class="img-box"><img src="https://unsplash.com"></div>
+                <div class="details">
+                    <span class="cat">Apparel</span>
+                    <h3>T-Shirt Iris Signature</h3>
+                    <p style="opacity: 0.5; margin-top: 10px;">Coton lourd 300g, coupe oversize luxe.</p>
+                    <span class="price">250 DH</span>
                 </div>
             </div>
-
-            <!-- ARTICLE 2 -->
-            <div class="card">
-                <div class="img-box">
-                    <img src="https://unsplash.com" alt="Chaussures">
-                </div>
-                <div class="info">
-                    <h3>Neon Runners</h3>
-                    <p>Technologie d'amorti futuriste. Conçues pour ceux qui courent après le succès dans l'empire.</p>
-                    <div class="p-footer">
-                        <span class="price">890 DH</span>
-                        <a href="https://wa.me" class="buy-btn">RÉSERVER</a>
-                    </div>
+            <!-- SWEAT -->
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="img-box"><img src="https://unsplash.com"></div>
+                <div class="details">
+                    <span class="cat">Sweats</span>
+                    <h3>Hoodie Iris "Midnight"</h3>
+                    <p style="opacity: 0.5; margin-top: 10px;">Confort absolu, logo réfléchissant.</p>
+                    <span class="price">450 DH</span>
                 </div>
             </div>
-
-            <!-- ARTICLE 3 -->
-            <div class="card">
-                <div class="img-box">
-                    <img src="https://unsplash.com" alt="Maillot">
-                </div>
-                <div class="info">
-                    <h3>Maillot Empire</h3>
-                    <p>Edition collector 2024. Tissu micro-perforé ultra-respirant. Portez les couleurs de Skilipo-web.</p>
-                    <div class="p-footer">
-                        <span class="price">400 DH</span>
-                        <a href="https://wa.me" class="buy-btn">ACHETER</a>
-                    </div>
+            <!-- PANTALON -->
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="img-box"><img src="https://unsplash.com"></div>
+                <div class="details">
+                    <span class="cat">Pants</span>
+                    <h3>Cargo Tech Iris 7</h3>
+                    <p style="opacity: 0.5; margin-top: 10px;">Coupe tactique, multi-poches, style empire.</p>
+                    <span class="price">550 DH</span>
                 </div>
             </div>
-
+            <!-- ACCESSOIRES -->
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <div class="img-box"><img src="https://unsplash.com"></div>
+                <div class="details">
+                    <span class="cat">Accessories</span>
+                    <h3>Casquette Iris 3D</h3>
+                    <p style="opacity: 0.5; margin-top: 10px;">Broderie premium, ajustable.</p>
+                    <span class="price">150 DH</span>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <footer id="contact">
-        <h2 style="margin-bottom: 20px;">REJOINDRE L'EMPIRE</h2>
-        <p style="font-size: 2rem; margin-bottom: 10px;">+212 772 727 472</p>
-        <a href="mailto:mokhtarijad100@gmail.com" class="contact-mail">mokhtarijad100@gmail.com</a>
+    <section id="ceo">
+        <div class="ceo-box" data-aos="fade-up">
+            <img src="https://dicebear.com" class="ceo-img">
+            <div>
+                <h2 style="font-size: 3.5rem;" class="grad-text">Mokhtari Jad</h2>
+                <p style="font-size: 1.4rem; opacity: 0.8; margin-top: 20px;">
+                    Fondateur de <strong>IRIS 7</strong>. Ma mission : créer le meilleur écosystème marketing et vestimentaire du Maroc.
+                </p>
+                <a href="https://wa.me" class="btn-empire">Collaborer avec moi</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" style="text-align: center; padding: 100px 10%;">
+        <h2 style="font-size: 5rem; font-weight: 800;" data-aos="zoom-in">CONTACT.</h2>
+        <div style="margin-top: 40px;">
+            <p style="font-size: 2.5rem; font-weight: 800; color: #8a2be2;">+212 772 727 472</p>
+            <p style="opacity: 0.5; margin-top: 10px;">mokhtarijad100@gmail.com</p>
+        </div>
     </footer>
 
+    <script src="https://cloudflare.com"></script>
     <script>
-        // Système de particules interactives (supérieur à ChatGPT)
-        const canvas = document.getElementById('bg');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        let particles = [];
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 1;
-                this.speedX = Math.random() * 1 - 0.5;
-                this.speedY = Math.random() * 1 - 0.5;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
-                if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
-            }
-            draw() {
-                ctx.fillStyle = '#8a2be2';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function init() {
-            for (let i = 0; i < 100; i++) particles.push(new Particle());
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(animate);
-        }
-
-        init();
-        animate();
+        AOS.init({ duration: 1000, once: false });
     </script>
 </body>
 </html>
+
