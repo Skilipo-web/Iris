@@ -3,28 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iris - Projet Web</title>
+    <title>Iris | Skilipo-web</title>
+    <!-- Importation d'une police pro via Google Fonts -->
+    <link href="https://googleapis.com" rel="stylesheet">
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
             display: flex; 
             flex-direction: column;
             justify-content: center; 
             align-items: center; 
-            height: 100vh; 
-            margin: 0;
-            background: radial-gradient(circle, #1a1a2e, #16213e); 
+            min-height: 100vh; 
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
             color: white; 
             text-align: center;
+            overflow: hidden;
         }
-        h1 { font-size: 3rem; margin-bottom: 10px; color: #4ecca3; }
-        p { font-size: 1.2rem; opacity: 0.8; }
-        .logo { font-size: 5rem; margin-bottom: 20px; }
+
+        /* Animation de l'œil qui "observe" */
+        .logo { 
+            font-size: 6rem; 
+            margin-bottom: 20px; 
+            filter: drop-shadow(0 0 20px rgba(78, 204, 163, 0.3));
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        h1 { 
+            font-size: 4rem; 
+            font-weight: 700;
+            background: linear-gradient(to right, #4ecca3, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        p { 
+            font-size: 1.2rem; 
+            max-width: 600px;
+            line-height: 1.6;
+            opacity: 0.8; 
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+
+        /* Bouton moderne avec effet de survol */
+        .btn {
+            padding: 15px 35px;
+            background: #4ecca3;
+            color: #0f172a;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(78, 204, 163, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(78, 204, 163, 0.4);
+            background: #ffffff;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(78, 204, 163, 0.3)); }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 40px rgba(78, 204, 163, 0.6)); }
+        }
+
+        /* Décoration en arrière-plan */
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(78, 204, 163, 0.05);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+        }
     </style>
 </head>
 <body>
+    <div class="blob"></div>
     <div class="logo">👁️</div>
-    <h1>Bienvenue sur Iris</h1>
-    <p>Le nouveau projet web de Skilipo-web est en cours de développement.</p>
+    <h1>Iris</h1>
+    <p>Découvrez la nouvelle dimension du web. Une interface épurée, une technologie fluide, pensée par <strong>Skilipo-web</strong>.</p>
+    
+    <a href="https://github.com" class="btn">Voir le projet</a>
 </body>
 </html>
