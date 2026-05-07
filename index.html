@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iris | Skilipo-web</title>
+    <title>Iris 7 | Excellence & Gestion</title>
     <link href="https://googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
@@ -13,108 +13,112 @@
         /* Animation Flash d'entrée (Style Guichet) */
         .loader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #8a2be2; z-index: 9999;
-            animation: slideOut 0.8s cubic-bezier(0.7, 0, 0.3, 1) forwards 0.5s;
+            background: linear-gradient(45deg, #8a2be2, #da70d6); z-index: 9999;
+            animation: slideOut 1s cubic-bezier(0.85, 0, 0.15, 1) forwards 0.6s;
         }
 
-        /* Navigation élégante */
+        /* Navigation */
         nav { 
-            position: fixed; top: 0; width: 100%; padding: 25px 8%; 
+            position: fixed; top: 0; width: 100%; padding: 20px 8%; 
             display: flex; justify-content: space-between; align-items: center; 
-            z-index: 1000; backdrop-filter: blur(15px); background: rgba(11, 15, 26, 0.5);
+            z-index: 1000; backdrop-filter: blur(20px); background: rgba(11, 15, 26, 0.7);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .logo { font-weight: 800; font-size: 1.6rem; color: #8a2be2; text-decoration: none; }
+        .logo { font-weight: 800; font-size: 1.8rem; background: linear-gradient(to right, #fff, #da70d6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 25px; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: #da70d6; }
 
-        /* Hero Section (Inspiration Odoo Home) */
-        section { min-height: 100vh; padding: 120px 10% 60px; display: flex; flex-direction: column; justify-content: center; }
-        
-        .hero h1 { 
-            font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 25px;
-            background: linear-gradient(to bottom right, #fff 30%, #8a2be2);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
+        /* Sections */
+        section { padding: 120px 10%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+        h2 { font-size: 3.5rem; font-weight: 800; margin-bottom: 50px; text-align: center; }
 
-        /* Cartes de Produits/Solutions (Animation Guichet) */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 60px; }
-        
-        .card { 
-            background: rgba(255, 255, 255, 0.03); border-radius: 30px; padding: 45px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: pointer; position: relative; overflow: hidden;
+        /* Grille d'Articles (Style E-commerce moderne) */
+        .items-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .item-card { 
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 25px; overflow: hidden; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
         }
-        .card:hover { 
-            background: rgba(138, 43, 226, 0.1); border-color: #8a2be2;
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-        }
+        .item-card:hover { transform: translateY(-15px); border-color: #8a2be2; box-shadow: 0 25px 50px rgba(138, 43, 226, 0.2); }
+        .item-img { width: 100%; height: 220px; background: #1e293b; display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+        .item-content { padding: 25px; }
+        .price-tag { color: #8a2be2; font-weight: 800; font-size: 1.4rem; margin-top: 15px; display: block; }
 
-        /* Bouton Action Odoo */
-        .btn-odoo {
-            display: inline-block; padding: 20px 45px; background: #8a2be2;
-            color: white; text-decoration: none; border-radius: 100px;
-            font-weight: 700; font-size: 1.1rem; margin-top: 40px;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 15px 30px rgba(138, 43, 226, 0.4);
-        }
-        .btn-odoo:hover { transform: scale(1.1); box-shadow: 0 20px 40px rgba(138, 43, 226, 0.6); }
+        /* Pied de page / Contact */
+        footer { background: #070a13; padding: 60px 10%; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
+        .contact-info { margin-top: 20px; opacity: 0.6; font-size: 0.9rem; }
 
-        @keyframes slideOut { to { transform: translateY(-100%); } }
-
-        /* Effet de lueur en fond */
-        .glow {
-            position: absolute; width: 600px; height: 600px; background: rgba(138, 43, 226, 0.15);
-            filter: blur(150px); border-radius: 50%; z-index: -1; top: -100px; right: -100px;
-        }
+        @keyframes slideOut { to { transform: translateX(100%); } }
     </style>
 </head>
 <body>
     <div class="loader"></div>
-    <div class="glow"></div>
 
     <nav>
-        <a href="#" class="logo">IRIS</a>
-        <div style="display: flex; gap: 30px;">
-            <a href="#solutions" style="color: white; text-decoration: none; font-weight: 600;">Nos Solutions</a>
-            <a href="https://odoo.com" style="color: #8a2be2; text-decoration: none; font-weight: 800;">Accès Odoo</a>
+        <a href="#" class="logo">IRIS 7</a>
+        <div class="nav-links">
+            <a href="#accueil">Accueil</a>
+            <a href="#articles">Articles</a>
+            <a href="#apropos">À Propos</a>
+            <a href="#contact">Contact</a>
         </div>
     </nav>
 
-    <section class="hero">
-        <h1 data-aos="fade-up">Gérez tout. <br>Partout. Simplement.</h1>
-        <p style="font-size: 1.4rem; max-width: 600px; opacity: 0.8; margin-bottom: 20px;" data-aos="fade-up" data-aos-delay="200">
-            Retrouvez la puissance de votre gestion **Iris Odoo** avec une interface repensée pour la performance.
+    <!-- ACCUEIL -->
+    <section id="accueil">
+        <h1 data-aos="fade-right" style="font-size: 5rem; line-height: 1;">Bienvenue dans <br><span style="color: #8a2be2;">l'écosystème Iris.</span></h1>
+        <p data-aos="fade-right" data-aos-delay="200" style="font-size: 1.4rem; max-width: 600px; margin: 30px 0; opacity: 0.7;">
+            La puissance de la gestion Iris 7 alliée à une interface d'exception conçue par Skilipo-web.
         </p>
-        <div data-aos="fade-up" data-aos-delay="400">
-            <a href="https://odoo.com" class="btn-odoo">Lancer votre espace Iris 7</a>
+        <a href="#articles" class="logo" style="font-size: 1rem; border: 1px solid #8a2be2; padding: 15px 30px; border-radius: 50px; display: inline-block;">Découvrir nos articles</a>
+    </section>
+
+    <!-- ARTICLES -->
+    <section id="articles">
+        <h2 data-aos="fade-up">Nos Articles de Vente</h2>
+        <div class="items-grid">
+            <div class="item-card" data-aos="zoom-in">
+                <div class="item-img">📦</div>
+                <div class="item-content">
+                    <h3>Module Gestion Pro</h3>
+                    <p>Optimisez votre inventaire avec la technologie Iris 7.</p>
+                    <span class="price-tag">Sur devis</span>
+                </div>
+            </div>
+            <div class="item-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="item-img">💻</div>
+                <div class="item-content">
+                    <h3>Interface Client Iris</h3>
+                    <p>L'accès premium pour vos utilisateurs finaux.</p>
+                    <span class="price-tag">199 DH / mois</span>
+                </div>
+            </div>
+            <div class="item-card" data-aos="zoom-in" data-aos-delay="400">
+                <div class="item-img">🛡️</div>
+                <div class="item-content">
+                    <h3>Pack Sécurité Skilipo</h3>
+                    <p>Protection avancée de vos données professionnelles.</p>
+                    <span class="price-tag">450 DH / an</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="solutions">
-        <h2 style="font-size: 3.5rem; margin-bottom: 20px;" data-aos="fade-right">Le coeur de votre business</h2>
-        <div class="grid">
-            <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <div style="font-size: 3rem; margin-bottom: 20px;">💼</div>
-                <h3>Gestion ERP</h3>
-                <p>La puissance d'Odoo intégrée directement à votre écosystème Iris.</p>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <div style="font-size: 3rem; margin-bottom: 20px;">📊</div>
-                <h3>Analytique Pro</h3>
-                <p>Suivez vos ventes et votre croissance en temps réel avec des graphiques fluides.</p>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="300">
-                <div style="font-size: 3rem; margin-bottom: 20px;">🛡️</div>
-                <h3>Sécurité Iris</h3>
-                <p>Vos données sont protégées par les protocoles les plus stricts de Skilipo-web.</p>
-            </div>
+    <!-- CONTACT & FOOTER -->
+    <footer id="contact">
+        <h2>Contactez Skilipo-web</h2>
+        <p>Prêt à transformer votre business avec Iris 7 ?</p>
+        <div class="contact-info">
+            <p>📧 contact@skilipo-web.com</p>
+            <p>🌐 Propulsé par la technologie Iris Odoo</p>
+            <p style="margin-top: 30px;">© 2024 Iris 7 - Tous droits réservés.</p>
         </div>
-    </section>
+    </footer>
 
     <script src="https://cloudflare.com"></script>
     <script>
-        AOS.init({ duration: 1000, once: false, mirror: true });
+        AOS.init({ duration: 1000, mirror: true });
     </script>
 </body>
 </html>
+
 
