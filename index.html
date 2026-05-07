@@ -3,119 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IRIS 7 | L'Empire de Mokhtari Jad</title>
+    <title>IRIS 7 | L'EMPIRE ULTIME</title>
     <link href="https://googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #050505; color: white; overflow-x: hidden; }
 
-        /* Loader & Intro Animation */
-        .loader { position: fixed; inset: 0; background: #8a2be2; z-index: 9999; animation: curtain 1.4s cubic-bezier(1, 0, 0, 1) forwards; }
+        /* Background de particules interactives */
+        #particles-js { position: fixed; width: 100%; height: 100%; z-index: -1; top: 0; left: 0; }
+
+        /* Loader Cinématique */
+        .loader { position: fixed; inset: 0; background: linear-gradient(135deg, #8a2be2, #da70d6); z-index: 9999; animation: curtain 1.2s cubic-bezier(1, 0, 0, 1) forwards 0.8s; display: flex; align-items: center; justify-content: center; }
+        .loader h2 { font-size: 3rem; font-weight: 800; letter-spacing: 10px; animation: pulse 1s infinite; }
         @keyframes curtain { 0% { transform: scaleY(1); } 100% { transform: scaleY(0); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.9); } }
 
-        /* Navigation Flottante */
-        nav { 
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
-            width: 95%; max-width: 1200px; padding: 15px 40px; 
-            display: flex; justify-content: space-between; align-items: center; 
-            z-index: 1000; backdrop-filter: blur(30px); 
-            background: rgba(255, 255, 255, 0.03); border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .logo { font-weight: 800; font-size: 1.8rem; color: #8a2be2; text-decoration: none; letter-spacing: -1px; }
-        .nav-links a { color: white; text-decoration: none; margin-left: 25px; font-weight: 600; font-size: 0.8rem; opacity: 0.6; transition: 0.4s; }
-        .nav-links a:hover { opacity: 1; color: #8a2be2; }
+        /* Navbar Futuriste */
+        nav { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 95%; max-width: 1200px; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; backdrop-filter: blur(30px); background: rgba(255, 255, 255, 0.03); border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .logo { font-weight: 800; font-size: 1.8rem; color: #8a2be2; text-decoration: none; text-shadow: 0 0 15px rgba(138, 43, 226, 0.5); }
+        .nav-links a { color: white; text-decoration: none; margin-left: 25px; font-weight: 600; font-size: 0.8rem; letter-spacing: 1px; transition: 0.4s; }
+        .nav-links a:hover { color: #8a2be2; text-shadow: 0 0 10px #8a2be2; }
 
-        /* Hero Section Parallaxe */
+        /* Hero Section */
         section { min-height: 100vh; padding: 140px 10% 80px; display: flex; flex-direction: column; justify-content: center; }
-        h1 { font-size: clamp(4rem, 15vw, 9rem); font-weight: 800; line-height: 0.8; letter-spacing: -5px; }
-        .grad-text { background: linear-gradient(180deg, #fff 40%, #8a2be2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h1 { font-size: clamp(4rem, 15vw, 9rem); font-weight: 800; line-height: 0.8; letter-spacing: -6px; }
+        .grad { background: linear-gradient(180deg, #fff 40%, #8a2be2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        /* Grille Boutique Premium */
-        .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 60px; }
-        .product-card { 
-            background: #111; border-radius: 30px; overflow: hidden; 
-            border: 1px solid rgba(255,255,255,0.05); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative; cursor: pointer;
-        }
-        .product-card:hover { transform: translateY(-20px) scale(1.02); border-color: #8a2be2; box-shadow: 0 40px 100px rgba(138, 43, 226, 0.3); }
+        /* Cards avec effet Tilt 3D */
+        .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 60px; perspective: 1000px; }
+        .card { background: #111; border-radius: 35px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-style: preserve-3d; }
+        .card:hover { border-color: #8a2be2; box-shadow: 0 40px 100px rgba(138, 43, 226, 0.4); }
+        .img-box { width: 100%; height: 400px; overflow: hidden; transform: translateZ(20px); }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: 1s; }
+        .card:hover img { transform: scale(1.1); }
+        .info { padding: 30px; transform: translateZ(40px); }
+        .price { font-size: 1.6rem; font-weight: 800; color: #8a2be2; margin-top: 15px; display: block; }
 
-        .img-container { width: 100%; height: 450px; overflow: hidden; position: relative; }
-        .product-img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
-        .product-card:hover .product-img { transform: scale(1.1); }
+        /* Section Founder */
+        .founder-card { background: linear-gradient(145deg, #0f0f0f, #1a1a1a); border-radius: 50px; padding: 80px; border: 1px solid #8a2be255; display: flex; align-items: center; gap: 60px; }
+        .founder-img { width: 300px; height: 300px; border-radius: 40px; border: 4px solid #8a2be2; box-shadow: 0 0 40px #8a2be244; transform: rotate(-3deg); }
 
-        .details { padding: 30px; background: linear-gradient(to top, #111, transparent); }
-        .cat { font-size: 0.7rem; font-weight: 800; color: #8a2be2; letter-spacing: 3px; text-transform: uppercase; }
-        .price { font-size: 1.5rem; font-weight: 800; margin-top: 10px; display: block; }
+        /* Footer */
+        .cta-btn { display: inline-block; padding: 22px 60px; background: #8a2be2; color: white; border-radius: 100px; text-decoration: none; font-weight: 800; font-size: 1.2rem; transition: 0.4s; box-shadow: 0 15px 30px #8a2be244; }
+        .cta-btn:hover { transform: translateY(-10px) scale(1.05); box-shadow: 0 25px 60px #8a2be2; }
 
-        /* Section Fondateur High-Tech */
-        .founder-sec { background: #080808; border-radius: 60px; padding: 100px 10%; margin: 0 5%; border: 1px solid rgba(138, 43, 226, 0.2); }
-        .founder-flex { display: flex; align-items: center; gap: 80px; }
-        .founder-img { width: 350px; height: 450px; border-radius: 40px; object-fit: cover; border: 2px solid #8a2be2; box-shadow: 20px 20px 0px #8a2be2; }
-
-        /* Footer & Contacts */
-        .contact-box { text-align: center; background: radial-gradient(circle at center, #1a1a1a, #050505); padding: 100px 10%; }
-        .btn-main { display: inline-block; padding: 22px 60px; background: #8a2be2; color: white; border-radius: 100px; text-decoration: none; font-weight: 800; font-size: 1.2rem; transition: 0.4s; margin: 15px; }
-        .btn-main:hover { transform: scale(1.1) rotate(-2deg); box-shadow: 0 0 50px rgba(138, 43, 226, 0.6); }
-
-        @media (max-width: 900px) { .founder-flex { flex-direction: column; text-align: center; } .founder-img { width: 100%; height: 350px; } }
+        @media (max-width: 900px) { .founder-card { flex-direction: column; text-align: center; padding: 40px; } .founder-img { transform: rotate(0); } }
     </style>
 </head>
 <body>
-    <div class="loader"></div>
+    <div id="particles-js"></div>
+    <div class="loader"><h2>IRIS 7</h2></div>
 
     <nav>
         <a href="#" class="logo">IRIS 7</a>
         <div class="nav-links">
             <a href="#shop">COLLECTION</a>
-            <a href="#founder">MOKHTARI JAD</a>
+            <a href="#founder">CEO</a>
             <a href="#contact">CONTACT</a>
         </div>
     </nav>
 
     <section id="hero">
-        <h1 data-aos="fade-right" data-aos-duration="1500"><span class="grad-text">L'EMPIRE</span><br>DU STYLE.</h1>
-        <p data-aos="fade-up" data-aos-delay="500" style="font-size: 1.5rem; opacity: 0.5; max-width: 600px; margin-top: 40px;">
-            La vision exclusive de <strong>Mokhtari Jad</strong>. Redéfinir la mode urbaine par l'innovation technique.
+        <h1 data-aos="fade-right" data-aos-duration="1500"><span class="grad">L'EMPIRE</span><br>BY JAD.</h1>
+        <p data-aos="fade-up" data-aos-delay="600" style="font-size: 1.6rem; opacity: 0.6; max-width: 650px; margin-top: 40px;">
+            La vision exclusive de <strong>Mokhtari Jad</strong>. Là où le streetwear rencontre la haute technologie.
         </p>
     </section>
 
     <section id="shop">
-        <h2 style="font-size: 4rem; font-weight: 800; margin-bottom: 20px;" data-aos="fade-up">Collection Drops</h2>
+        <h2 style="font-size: 4rem; font-weight: 800;" data-aos="fade-down">Catalogue Premium</h2>
         <div class="shop-grid">
-            <!-- T-SHIRT -->
-            <div class="product-card" data-aos="zoom-in-up">
-                <div class="img-container">
-                    <img src="https://unsplash.com" class="product-img" alt="T-shirt Iris 7">
-                </div>
-                <div class="details">
-                    <span class="cat">Apparel</span>
-                    <h3>T-Shirt Signature "Iris 7"</h3>
-                    <p style="opacity: 0.5; margin: 10px 0;">Coton lourd 300g, coupe boxy, logo réfléchissant.</p>
+            <div class="card" data-aos="zoom-in-up">
+                <div class="img-box"><img src="https://unsplash.com"></div>
+                <div class="info">
+                    <span style="color: #8a2be2; font-weight: 800; letter-spacing: 2px;">APPAREL</span>
+                    <h3>T-Shirt Iris Signature</h3>
+                    <p style="opacity: 0.5; margin: 10px 0;">Coton lourd 350g, coupe oversize, finitions main.</p>
                     <span class="price">220 DH</span>
                 </div>
             </div>
-            <!-- SHOES -->
-            <div class="product-card" data-aos="zoom-in-up" data-aos-delay="200">
-                <div class="img-container">
-                    <img src="https://unsplash.com" class="product-img" alt="Chaussures Iris 7">
-                </div>
-                <div class="details">
-                    <span class="cat">Footwear</span>
+            <div class="card" data-aos="zoom-in-up" data-aos-delay="200">
+                <div class="img-box"><img src="https://unsplash.com"></div>
+                <div class="info">
+                    <span style="color: #8a2be2; font-weight: 800; letter-spacing: 2px;">SHOES</span>
                     <h3>Sneakers Neon Matrix</h3>
-                    <p style="opacity: 0.5; margin: 10px 0;">Technologie d'amorti Iris-Cushion, design futuriste.</p>
+                    <p style="opacity: 0.5; margin: 10px 0;">Design aérodynamique, semelle intelligente.</p>
                     <span class="price">890 DH</span>
                 </div>
             </div>
-            <!-- JERSEY -->
-            <div class="product-card" data-aos="zoom-in-up" data-aos-delay="400">
-                <div class="img-container">
-                    <img src="https://unsplash.com" class="product-img" alt="Maillot Iris 7">
-                </div>
-                <div class="details">
-                    <span class="cat">Limited</span>
-                    <h3>Maillot Officiel "Empire"</h3>
-                    <p style="opacity: 0.5; margin: 10px 0;">Édition collector numérotée, tissu respirant pro.</p>
+            <div class="card" data-aos="zoom-in-up" data-aos-delay="400">
+                <div class="img-box"><img src="https://unsplash.com"></div>
+                <div class="info">
+                    <span style="color: #8a2be2; font-weight: 800; letter-spacing: 2px;">JERSEY</span>
+                    <h3>Maillot Officiel Empire</h3>
+                    <p style="opacity: 0.5; margin: 10px 0;">Édition limitée collector, tissu pro-athétique.</p>
                     <span class="price">400 DH</span>
                 </div>
             </div>
@@ -123,38 +105,41 @@
     </section>
 
     <section id="founder">
-        <div class="founder-sec" data-aos="fade-up">
-            <div class="founder-flex">
-                <img src="https://dicebear.com" class="founder-img" alt="Mokhtari Jad">
-                <div class="founder-info">
-                    <h2 style="font-size: 4rem; margin-bottom: 30px;" class="grad-text">Le Fondateur</h2>
-                    <p style="font-size: 1.4rem; line-height: 1.8; opacity: 0.8;">
-                        Je suis <strong>Mokhtari Jad</strong>, visionnaire derrière l'empire <strong>IRIS 7</strong>. Ma mission est de fusionner l'art du streetwear avec la précision technologique de <strong>Skilipo-web</strong> pour créer une expérience de mode inédite au Maroc.
-                    </p>
-                    <p style="margin-top: 40px; font-weight: 800; color: #8a2be2; font-size: 1.2rem; letter-spacing: 2px;">— CEO & FOUNDER</p>
-                </div>
+        <div class="founder-card" data-aos="fade-up">
+            <img src="https://dicebear.com" class="founder-img" alt="Mokhtari Jad">
+            <div>
+                <h2 style="font-size: 3.5rem;" class="grad">Mokhtari Jad</h2>
+                <p style="font-size: 1.4rem; opacity: 0.8; margin: 20px 0; line-height: 1.8;">
+                    Fondateur de <strong>IRIS 7</strong> et <strong>Skilipo-web</strong>. Mon ambition est de bâtir un empire digital et vestimentaire où chaque détail respire l'innovation et la puissance.
+                </p>
+                <p style="font-weight: 800; color: #8a2be2; letter-spacing: 3px;">CEO & FOUNDER</p>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact-box">
-        <h2 style="font-size: 5rem; font-weight: 800;" data-aos="zoom-in">REJOIGNEZ<br>L'EMPIRE.</h2>
-        <div style="margin-top: 50px;">
-            <p style="font-size: 2rem; font-weight: 800; color: #8a2be2;">+212 772 727 472</p>
-            <p style="opacity: 0.6; margin-top: 10px;">mokhtarijad100@gmail.com</p>
+    <section id="contact" style="text-align: center;">
+        <h2 style="font-size: 5rem; font-weight: 800;" data-aos="zoom-in">CONTACT DIRECT</h2>
+        <div style="margin-top: 40px;">
+            <p style="font-size: 2.5rem; font-weight: 800; color: #8a2be2;">+212 772 727 472</p>
+            <p style="opacity: 0.6; margin: 15px 0;">mokhtarijad100@gmail.com</p>
         </div>
-        <div style="margin-top: 60px;">
-            <a href="https://wa.me" class="btn-main">WHATSAPP</a>
-            <a href="mailto:mokhtarijad100@gmail.com" class="btn-main" style="background: white; color: black;">EMAIL</a>
+        <div style="margin-top: 50px;">
+            <a href="https://wa.me" class="cta-btn">WHATSAPP</a>
+            <a href="mailto:mokhtarijad100@gmail.com" class="cta-btn" style="background: white; color: black;">EMAIL</a>
         </div>
     </section>
 
     <script src="https://cloudflare.com"></script>
+    <script src="https://jsdelivr.net"></script>
+    <script src="https://cloudflare.com"></script>
     <script>
-        AOS.init({ duration: 1000, once: false, mirror: true });
+        AOS.init({ duration: 1000, once: false });
+        particlesJS("particles-js", {"particles":{"number":{"value":80},"color":{"value":"#8a2be2"},"shape":{"type":"circle"},"opacity":{"value":0.5},"size":{"value":3},"line_linked":{"enable":true,"distance":150,"color":"#8a2be2","opacity":0.4,"width":1},"move":{"enable":true,"speed":2}},"interactivity":{"events":{"onhover":{"enable":true,"mode":"repulse"}}}});
+        VanillaTilt.init(document.querySelectorAll(".card"), { max: 15, speed: 400, glare: true, "max-glare": 0.3 });
     </script>
 </body>
 </html>
+
 
 
 
