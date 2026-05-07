@@ -3,38 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IRIS 7 | L'EMPIRE MOKHTARI JAD</title>
-    <!-- Font Google & AOS animations -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>IRIS 7 2026 | Collection Premium | Mokhtari Jad</title>
+    <meta name="description" content="IRIS 7 - Collection Premium 2026. Streetwear haut de gamme, textile d'exception, design futuriste.">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
-            --iris: #8a2be2;
-            --bg: #f5f5f5;
-            --fg: #000;
-            --nav-bg: #fff;
-            --nav-shadow: 0 2px 16px 0 rgba(52,50,64,0.03);
-            --accent: #ff006e;
-            --accent2: #00d9ff;
+            --primary: #7c3aed;
+            --secondary: #ec4899;
+            --tertiary: #06b6d4;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray-dark: #1e293b;
+            --gray-light: #e2e8f0;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
         }
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg: #050505;
-                --nav-bg: #161326f2;
-                --fg: #fff;
-                --nav-shadow: 0 2px 32px 0 #8a2be223;
-            }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: var(--bg);
-            color: var(--fg);
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 100%);
+            color: #f8fafc;
             overflow-x: hidden;
-            min-height: 100vh;
-            transition: background .3s, color .3s;
+            line-height: 1.6;
         }
 
         /* NAVIGATION */
@@ -42,261 +53,434 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 18px 6%;
+            height: 80px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: var(--nav-bg);
-            z-index: 1100;
-            border-bottom: 1px solid #eee;
-            box-shadow: var(--nav-shadow);
-            transition: background .3s, box-shadow .3s;
-            backdrop-filter: blur(10px);
+            padding: 0 8%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+            z-index: 2000;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        nav.scrolled {
+            background: rgba(15, 23, 42, 0.95);
+            box-shadow: 0 10px 40px rgba(124, 58, 237, 0.15);
+            border-bottom-color: rgba(124, 58, 237, 0.3);
+            height: 75px;
+            padding: 0 6%;
         }
 
         .logo {
-            font-size: 1.9rem;
-            font-weight: 800;
-            color: var(--iris);
-            text-decoration: none;
-            letter-spacing: -2px;
-            transition: color 0.3s;
-            background: linear-gradient(135deg, var(--iris), var(--accent2));
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #7c3aed, #ec4899, #06b6d4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: logoGlow 3s ease-in-out infinite;
+            background-clip: text;
+            letter-spacing: -1px;
+            cursor: pointer;
+            position: relative;
+            animation: logoFloat 3s ease-in-out infinite;
         }
 
-        @keyframes logoGlow {
-            0%, 100% { filter: drop-shadow(0 0 8px rgba(138, 43, 226, 0.3)); }
-            50% { filter: drop-shadow(0 0 20px rgba(0, 217, 255, 0.5)); }
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
         }
 
         .nav-links {
             display: flex;
-            gap: 10px;
+            gap: 2px;
+            list-style: none;
         }
 
         .nav-links a {
-            color: var(--fg);
+            color: #f8fafc;
             text-decoration: none;
-            padding: 10px 16px;
-            font-weight: 600;
-            font-size: 1rem;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
             position: relative;
-            transition: color 0.3s;
-            border-radius: 20px;
+            transition: all 0.3s ease;
+            overflow: hidden;
         }
 
         .nav-links a::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--iris), var(--accent2));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .nav-links a:hover {
-            color: var(--iris);
-            background: rgba(138, 43, 226, 0.08);
-        }
-
-        .nav-links a:hover::before {
-            transform: scaleX(1);
-        }
-
-        /* HERO SECTION */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(120deg, var(--iris) 0 40%, var(--bg) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 6%;
-            position: relative;
-            overflow: hidden;
-            margin-top: 70px;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--accent2), transparent);
-            filter: blur(100px);
-            opacity: 0.15;
-            animation: floatBlob 15s ease-in-out infinite;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, var(--accent), transparent);
-            filter: blur(100px);
-            opacity: 0.1;
-            animation: floatBlob 20s ease-in-out infinite reverse;
-        }
-
-        @keyframes floatBlob {
-            0%, 100% { transform: translate(0, 0); }
-            33% { transform: translate(30px, -30px); }
-            66% { transform: translate(-20px, 20px); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-        }
-
-        .hero-strap {
-            font-weight: 700;
-            letter-spacing: 3px;
-            color: #fff;
-            text-shadow: 0 2px 20px #8a2be2b2;
-            animation: slideDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: inline-block;
-            background: linear-gradient(90deg, #fff, var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-title {
-            font-size: clamp(3rem, 9vw, 7rem);
-            font-weight: 800;
-            line-height: 0.8;
-            margin: 20px 0;
-            letter-spacing: -5px;
-            background: linear-gradient(135deg, #fff, var(--iris), var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: scaleInDown 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
-        }
-
-        @keyframes scaleInDown {
-            from { opacity: 0; transform: scale(0.8) translateY(-40px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        .hero-desc {
-            font-size: 1.3rem;
-            max-width: 650px;
-            margin: 32px auto 40px;
-            color: #fff;
-            text-shadow: 0 2px 16px #8a2be244;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .btn-black {
-            background: var(--fg);
-            color: var(--bg);
-            padding: 14px 40px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            letter-spacing: 1px;
-            font-size: 1.1rem;
-            box-shadow: 0 6px 36px #8a2be21a;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            will-change: transform;
-            display: inline-block;
-            position: relative;
-            overflow: hidden;
-            animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s both;
-        }
-
-        .btn-black::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.3), transparent);
             transition: left 0.5s;
         }
 
-        .btn-black:hover::before {
+        .nav-links a:hover::before {
             left: 100%;
         }
 
-        .btn-black:hover {
-            background: var(--iris);
-            color: #fff;
-            transform: scale(1.12) translateY(-5px);
-            box-shadow: 0 15px 50px #8a2be244;
+        .nav-links a:hover {
+            background: rgba(124, 58, 237, 0.15);
+            color: #7c3aed;
+            transform: translateY(-2px);
         }
 
-        @keyframes popIn {
-            from { opacity: 0; transform: scale(0.5); }
-            to { opacity: 1; transform: scale(1); }
+        .nav-btn {
+            display: flex;
+            gap: 12px;
         }
 
-        /* SECTION GALERIE */
-        .gallery-section {
-            padding: 100px 6% 80px;
-            background: linear-gradient(180deg, transparent, rgba(138, 43, 226, 0.03));
+        .btn-small {
+            padding: 10px 24px;
+            border-radius: 20px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-small.primary {
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            color: white;
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-small.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(124, 58, 237, 0.4);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #7c3aed;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 8% 80px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 20% 50%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff 0%, #7c3aed 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid rgba(124, 58, 237, 0.4);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #7c3aed;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 40px;
+            line-height: 1.8;
+            max-width: 500px;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 50px;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .btn-primary {
+            padding: 16px 48px;
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 10px 40px rgba(124, 58, 237, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.4);
+        }
+
+        .btn-secondary {
+            padding: 16px 48px;
+            background: transparent;
+            color: #7c3aed;
+            border: 2px solid #7c3aed;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(124, 58, 237, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 50px;
+            margin-top: 60px;
+            animation: fadeInUp 0.8s ease 0.5s both;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-top: 8px;
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 500px;
+            animation: slideInRight 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .floating-card:nth-child(1) {
+            width: 280px;
+            top: 50px;
+            right: 0;
+            animation-delay: 0s;
+        }
+
+        .floating-card:nth-child(2) {
+            width: 320px;
+            bottom: 80px;
+            left: 0;
+            animation-delay: 1s;
+        }
+
+        .floating-card:nth-child(3) {
+            width: 240px;
+            bottom: 120px;
+            right: 40px;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+
+        /* COLLECTION SECTION */
+        .collection-section {
+            padding: 120px 8%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid rgba(124, 58, 237, 0.4);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #7c3aed;
+            margin-bottom: 20px;
         }
 
         .section-title {
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin-bottom: 50px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            background: linear-gradient(135deg, var(--iris), var(--accent2));
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #7c3aed 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 32px #8a2be215;
-            animation: titleSlide 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background-clip: text;
         }
 
-        @keyframes titleSlide {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
+        .section-desc {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* SHOP GRID */
-        .shop-grid {
+        .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
-            width: 100%;
+            position: relative;
+            z-index: 1;
         }
 
         .product-card {
-            position: relative;
-            background: var(--nav-bg);
-            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(138, 43, 226, 0.1);
             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
             cursor: pointer;
-            outline: none;
-            border: 1px solid rgba(138, 43, 226, 0.15);
+            position: relative;
+            group: 'card';
         }
 
         .product-card::before {
@@ -306,183 +490,492 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, var(--iris), var(--accent2));
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(236, 72, 153, 0.1));
             opacity: 0;
             transition: opacity 0.5s;
-            z-index: 1;
-            pointer-events: none;
+            z-index: 10;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            border-color: rgba(124, 58, 237, 0.5);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2);
         }
 
         .product-card:hover::before {
-            opacity: 0.08;
+            opacity: 1;
         }
 
-        .product-card:hover,
-        .product-card:focus {
-            transform: translateY(-15px) scale(1.05);
-            box-shadow: 0 30px 80px rgba(138, 43, 226, 0.25);
-            border-color: rgba(138, 43, 226, 0.4);
-        }
-
-        .product-card:active {
-            transform: translateY(-15px) scale(1.03);
-        }
-
-        .img-container {
+        .product-image {
             width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(0, 217, 255, 0.05));
+            height: 350px;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(6, 182, 212, 0.05));
+            position: relative;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            position: relative;
         }
 
-        .img-container::before {
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.15) rotate(3deg);
+            filter: brightness(1.1);
+        }
+
+        .product-badge-label {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: linear-gradient(135deg, #ec4899, #7c3aed);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            z-index: 20;
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .product-info {
+            padding: 28px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .product-category {
+            font-size: 0.85rem;
+            color: #7c3aed;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .product-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .product-description {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            min-height: 50px;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .product-price {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .product-btn {
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid rgba(124, 58, 237, 0.4);
+            color: #7c3aed;
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .product-btn:hover {
+            background: #7c3aed;
+            color: white;
+            border-color: #7c3aed;
+            transform: translateY(-2px);
+        }
+
+        /* FEATURES SECTION */
+        .features-section {
+            padding: 120px 8%;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(236, 72, 153, 0.05));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(124, 58, 237, 0.5);
+            background: rgba(124, 58, 237, 0.08);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .feature-desc {
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials-section {
+            padding: 120px 8%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.5s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(124, 58, 237, 0.5);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.15);
+        }
+
+        .stars {
+            color: #f59e0b;
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .testimonial-text {
+            color: #cbd5e1;
+            margin-bottom: 24px;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .author-info p {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            padding: 120px 8%;
+            background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at center, transparent 0%, rgba(138, 43, 226, 0.05) 100%);
-            z-index: 2;
-        }
-
-        .img-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            will-change: transform, filter;
-            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.1"><path d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/></g></g></svg>');
+            opacity: 0.5;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            padding: 16px 48px;
+            background: white;
+            color: #7c3aed;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, #0f172a, #1a1f3a);
+            padding: 80px 8% 40px;
+            border-top: 1px solid rgba(124, 58, 237, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.1), transparent);
+            filter: blur(100px);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 60px;
+            margin-bottom: 60px;
             position: relative;
             z-index: 1;
         }
 
-        .product-card:hover .img-container img,
-        .product-card:focus .img-container img {
-            transform: scale(1.15) rotate(3deg);
-            filter: brightness(1.08);
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: linear-gradient(135deg, var(--accent), var(--iris));
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            z-index: 10;
-            animation: badgeBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
-            letter-spacing: 1px;
-        }
-
-        @keyframes badgeBounce {
-            from { opacity: 0; transform: scale(0) rotate(-45deg); }
-            to { opacity: 1; transform: scale(1) rotate(0); }
-        }
-
-        .product-info {
-            padding: 28px 24px;
-            position: relative;
-            z-index: 3;
-        }
-
-        .product-name {
-            font-size: 1.35rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-            color: var(--fg);
-        }
-
-        .product-desc {
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 12px;
-            line-height: 1.5;
-            min-height: 45px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .product-cat {
-            color: var(--iris);
-            font-size: 0.9rem;
-            margin-bottom: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .product-price {
-            font-weight: 800;
-            font-size: 1.5rem;
-            background: linear-gradient(135deg, var(--iris), var(--accent2));
+        .footer-brand h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-top: 10px;
+            background-clip: text;
         }
 
-        .product-card:hover .product-price {
-            animation: priceShine 0.6s ease;
+        .footer-brand p {
+            color: #cbd5e1;
+            line-height: 1.8;
         }
 
-        @keyframes priceShine {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.3); }
+        .footer-section h4 {
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
         }
 
-        /* CONTAINER */
-        .container {
-            padding: 80px 6% 60px;
+        .footer-section ul {
+            list-style: none;
         }
 
-        /* FAB WHATSAPP BUTTON */
-        .fab-wa {
-            position: fixed;
-            right: 32px;
-            bottom: 40px;
-            background: linear-gradient(135deg, #25d366, #20ba5a);
-            color: #fff;
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #7c3aed;
+            transform: translateX(5px);
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #cbd5e1;
+        }
+
+        .contact-item i {
+            color: #7c3aed;
+            font-size: 1.2rem;
+        }
+
+        .contact-item a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #7c3aed;
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid rgba(124, 58, 237, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-copyright {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            width: 70px;
-            height: 70px;
-            box-shadow: 0 8px 48px #25d36655;
-            border: none;
-            cursor: pointer;
+            background: rgba(124, 58, 237, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
-            z-index: 1200;
-            animation: jumpIn 1s cubic-bezier(0.34, 1.56, 0.64, 1);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color: #7c3aed;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(124, 58, 237, 0.3);
         }
 
-        .fab-wa:hover {
-            transform: scale(1.15) rotate(10deg);
-            box-shadow: 0 15px 65px #25d36677;
+        .social-link:hover {
+            background: #7c3aed;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
         }
 
-        .fab-wa:active {
-            transform: scale(0.95);
+        /* WHATSAPP FAB */
+        .fab-whatsapp {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #25d366, #20ba5a);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 2rem;
+            box-shadow: 0 10px 40px rgba(37, 211, 102, 0.3);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 1500;
+            animation: fabFloat 3s ease-in-out infinite;
         }
 
-        @keyframes jumpIn {
-            0% { opacity: 0; transform: translateY(100px) scale(0.3); }
-            60% { opacity: 1; transform: translateY(-10px); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
+        .fab-whatsapp:hover {
+            transform: scale(1.15) rotate(-10deg);
+            box-shadow: 0 15px 50px rgba(37, 211, 102, 0.5);
         }
 
-        /* PULSA ANIMATION */
-        .fab-wa::after {
+        @keyframes fabFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .fab-whatsapp::after {
             content: '';
             position: absolute;
             width: 100%;
@@ -493,125 +986,174 @@
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.4); opacity: 0; }
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
         }
 
-        /* FOOTER */
-        footer {
-            background: linear-gradient(135deg, var(--iris), var(--accent));
-            color: #fff;
-            padding: 120px 6% 60px;
-            text-align: center;
-            border-top-left-radius: 40px;
-            border-top-right-radius: 40px;
-            box-shadow: 0 -10px 48px rgba(138, 43, 226, 0.15);
-            position: relative;
-            overflow: hidden;
+        /* SCROLL TO TOP */
+        .scroll-top {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            width: 50px;
+            height: 50px;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid rgba(124, 58, 237, 0.4);
+            border-radius: 12px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1400;
+            transition: all 0.3s ease;
         }
 
-        footer::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -30%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0, 217, 255, 0.2), transparent);
-            filter: blur(80px);
-            animation: floatBlob 18s ease-in-out infinite;
+        .scroll-top.show {
+            display: flex;
         }
 
-        footer h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .contact-big {
-            font-size: 2.2rem;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 800;
-            margin: 20px 0 0;
-            display: inline-block;
-            letter-spacing: 2px;
-            transition: all 0.3s;
-            position: relative;
-            z-index: 2;
-        }
-
-        .contact-big::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: #fff;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .contact-big:hover {
-            transform: scale(1.05);
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-        }
-
-        .contact-big:hover::after {
-            transform: scaleX(1);
-        }
-
-        .footer-mail {
-            display: block;
-            color: #fff;
-            opacity: 0.9;
-            margin: 25px 0 0;
-            font-size: 1.1rem;
-            text-decoration: none;
-            word-break: break-all;
-            transition: all 0.3s;
-            position: relative;
-            z-index: 2;
-        }
-
-        .footer-mail:hover {
-            opacity: 1;
-            text-decoration: underline;
+        .scroll-top:hover {
+            background: rgba(124, 58, 237, 0.4);
+            transform: translateY(-5px);
         }
 
         /* RESPONSIVE */
-        @media (max-width: 800px) {
-            nav { padding: 16px 4%; }
-            .hero { padding: 0 4%; margin-top: 60px; }
-            .container, footer { padding-left: 4%; padding-right: 4%; }
-            .img-container { height: 300px; }
-            .shop-grid { gap: 28px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-            .section-title { font-size: 2rem; }
-            .product-card { border-radius: 20px; }
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-visual {
+                height: 350px;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             nav {
+                padding: 0 4%;
+            }
+
+            nav.scrolled {
+                padding: 0 4%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                padding: 100px 4% 60px;
+                margin-top: 60px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-stats {
+                gap: 30px;
+            }
+
+            .collection-section,
+            .features-section,
+            .testimonials-section,
+            .cta-section,
+            footer {
+                padding: 80px 4%;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 25px;
+            }
+
+            .features-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .fab-whatsapp {
+                width: 60px;
+                height: 60px;
+                bottom: 30px;
+                right: 20px;
+                font-size: 1.5rem;
+            }
+
+            .scroll-top {
+                width: 45px;
+                height: 45px;
+                bottom: 30px;
+                left: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 80px 3% 40px;
+                margin-top: 50px;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-cta {
                 flex-direction: column;
                 gap: 12px;
-                padding: 12px 2%;
             }
-            .logo { font-size: 1.3rem; }
-            .nav-links { flex-direction: column; gap: 8px; }
-            .nav-links a { padding: 8px 12px; font-size: 0.9rem; }
-            .hero-title { font-size: 2.2rem; }
-            .hero-desc { font-size: 1rem; }
-            .img-container { height: 220px; }
-            .product-info { padding: 18px; }
-            .product-name { font-size: 1.1rem; }
-            .product-badge { padding: 6px 12px; font-size: 0.75rem; top: 10px; right: 10px; }
-            .fab-wa { width: 60px; height: 60px; right: 20px; bottom: 30px; }
-            footer { padding: 80px 4% 40px; border-top-left-radius: 30px; border-top-right-radius: 30px; }
-            footer h2 { font-size: 1.8rem; }
-            .contact-big { font-size: 1.6rem; }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -625,339 +1167,437 @@
 </head>
 <body>
 
-    <nav>
+    <!-- NAVIGATION -->
+    <nav id="navbar">
         <a href="#" class="logo">IRIS 7</a>
-        <div class="nav-links">
-            <a href="#shop">Nouveautés</a>
-            <a href="#tshirts">T-Shirts</a>
-            <a href="#pantalons">Pantalons</a>
-            <a href="#maillots">Maillots</a>
+        <div class="nav-links" id="navLinks">
+            <a href="#collection">Collection 2026</a>
+            <a href="#features">Avantages</a>
+            <a href="#testimonials">Avis clients</a>
+            <a href="#footer">Contact</a>
+        </div>
+        <div class="nav-btn">
+            <a href="https://wa.me/212772727472" target="_blank" class="btn-small primary">Commander</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </nav>
 
-    <header class="hero" id="hero">
-        <div class="hero-content">
-            <p class="hero-strap">MOKHTARI JAD PRÉSENTE</p>
-            <h1 class="hero-title">JUST DO IT.<br>BY IRIS 7.</h1>
-            <p class="hero-desc">
-                L'excellence du marketing et du textile. La vision de Skilipo-web pour l'empire digital.
-            </p>
-            <a href="#shop" class="btn-black">Acheter la collection</a>
-        </div>
-    </header>
-
-    <!-- GALERIE PRINCIPALE -->
-    <section id="shop" class="gallery-section">
-        <h2 class="section-title" data-aos="fade-right">Articles à la une</h2>
-        <div class="shop-grid">
-
-            <!-- PRODUIT 1: T-SHIRT SIGNATURE -->
-            <div class="product-card" tabindex="0" data-aos="fade-up" data-aos-duration="800">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80" alt="T-shirt Iris 7 Signature">
-                    <span class="product-badge">À LA UNE</span>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">🚀 COLLECTION 2026</div>
+                <h1>L'EMPIRE MOKHTARI JAD<br>RÉINVENTÉ</h1>
+                <p class="hero-desc">Découvrez la collection premium 2026. Design futuriste, qualité inégalée, animations numériques bluffantes. L'excellence redéfinie.</p>
+                <div class="hero-cta">
+                    <a href="#collection" class="btn-primary">Voir la collection</a>
+                    <a href="https://wa.me/212772727472" target="_blank" class="btn-secondary">Discuter maintenant</a>
                 </div>
-                <div class="product-info">
-                    <p class="product-cat">✨ Haut Streetwear</p>
-                    <p class="product-name">T-Shirt Iris 7 Signature</p>
-                    <p class="product-desc">Coton premium 100% ultra-confortable. Design exclusif avec broderie dorée. Parfait pour tous les styles.</p>
-                    <p class="product-price">220 DH</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">5K+</div>
+                        <div class="stat-label">Clients satisfaits</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Qualité garantie</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">24h</div>
+                        <div class="stat-label">Livraison</div>
+                    </div>
                 </div>
             </div>
-
-            <!-- PRODUIT 2: PANTALON CARGO EMPIRE -->
-            <div class="product-card" tabindex="0" data-aos="fade-up" data-aos-delay="120" data-aos-duration="800">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1542272604-787c62d465d1?auto=format&fit=crop&w=800&q=80" alt="Pantalon Cargo Empire">
-                    <span class="product-badge">TENDANCE</span>
+            <div class="hero-visual">
+                <div class="floating-card">
+                    <div class="card-icon">✨</div>
+                    <div class="card-title">Premium Quality</div>
+                    <div class="card-desc">Textile d'exception</div>
                 </div>
-                <div class="product-info">
-                    <p class="product-cat">👖 Bas Tactique</p>
-                    <p class="product-name">Pantalon Cargo Empire</p>
-                    <p class="product-desc">Matière durable et respirante. Poches multiples pour rangement. Coupe moderne et confortable.</p>
-                    <p class="product-price">550 DH</p>
+                <div class="floating-card">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-title">Design Moderne</div>
+                    <div class="card-desc">Tendance 2026</div>
                 </div>
-            </div>
-
-            <!-- PRODUIT 3: SNEAKERS IRIS NEON -->
-            <div class="product-card" tabindex="0" data-aos="fade-up" data-aos-delay="240" data-aos-duration="800">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80" alt="Sneakers Iris Neon">
-                    <span class="product-badge">NOUVEAU</span>
-                </div>
-                <div class="product-info">
-                    <p class="product-cat">👟 Chaussures de Sport</p>
-                    <p class="product-name">Sneakers Iris Neon</p>
-                    <p class="product-desc">Design futuriste avec détails néon. Semelle ergonomique et amortissante. Légères et stylées.</p>
-                    <p class="product-price">890 DH</p>
+                <div class="floating-card">
+                    <div class="card-icon">⚡</div>
+                    <div class="card-title">Fast Delivery</div>
+                    <div class="card-desc">Ultra rapide</div>
                 </div>
             </div>
-
-            <!-- PRODUIT 4: HOODIE EMPIRE DELUXE -->
-            <div class="product-card" tabindex="0" data-aos="fade-up" data-aos-duration="800">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1556821552-5f8f1c4d3c25?auto=format&fit=crop&w=800&q=80" alt="Hoodie Empire Deluxe">
-                    <span class="product-badge">PREMIUM</span>
-                </div>
-                <div class="product-info">
-                    <p class="product-cat">🧥 Vêtements Chauds</p>
-                    <p class="product-name">Hoodie Empire Deluxe</p>
-                    <p class="product-desc">Tissu molletonné premium ultra doux. Cordon de serrage confortable. Poches kangaroo spacieuses.</p>
-                    <p class="product-price">680 DH</p>
-                </div>
-            </div>
-
-            <!-- PRODUIT 5: JACKET IRIS BOMBER -->
-            <div class="product-card" tabindex="0" data-aos="fade-up" data-aos-delay="120" data-aos-duration="800">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1551028719-00167b16ebc5?auto=format&fit=crop&w=800&q=80" alt="Jacket Iris Bomber">
-                    <span class="product-badge">TENDANCE</span>
-                </div>
-                <div class="product-info">
-                    <p class="product-cat">🎽 Vêtements d'Extérieur</p>
-                    <p class="product-name">Jacket Iris Bomber</p>
-                    <p class="product-desc">Coupe bomber intemporelle. Matière imperméable et respirante. Fermeture éclair YKK durable.</p>
-                    <p class="product-price">920 DH</p>
-                </div>
-            </div>
-
-            <!-- PRODUIT 6: SWEATPANT SIGNATURE -->
-            <div class="product-card" tabindex="0" data-aos="fade-up" data-aos-delay="240" data-aos-duration="800">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1528795055-98e3b5e9e3d4?auto=format&fit=crop&w=800&q=80" alt="Sweatpant Signature">
-                    <span class="product-badge">À LA UNE</span>
-                </div>
-                <div class="product-info">
-                    <p class="product-cat">👕 Bas Confort</p>
-                    <p class="product-name">Sweatpant Signature</p>
-                    <p class="product-desc">Confort maximal pour le quotidien. Tissus respirants et extensibles. Poches latérales profondes.</p>
-                    <p class="product-price">480 DH</p>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <!-- SECTION T-SHIRTS -->
-    <section id="tshirts" class="container">
-        <h2 class="section-title" data-aos="fade-right">Collection T-Shirts</h2>
-        <div class="shop-grid">
+    <!-- COLLECTION SECTION -->
+    <section class="collection-section" id="collection">
+        <div class="section-header">
+            <div class="section-badge">💎 COLLECTION EXCLUSIVE</div>
+            <h2 class="section-title">Dernières Créations 2026</h2>
+            <p class="section-desc">Découvrez notre sélection exclusive de vêtements premium pour la saison 2026. Design avant-gardiste et qualité exceptionnelle.</p>
+        </div>
 
-            <div class="product-card" tabindex="0" data-aos="fade-up" data-aos-duration="800">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1515949377457-7d71bcdd2338?auto=format&fit=crop&w=800&q=80" alt="T-Shirt Classic Iris">
-                    <span class="product-badge">CLASSIQUE</span>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card" data-aos="fade-up" data-aos-duration="800">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80" alt="T-Shirt Iris 7 2026">
+                    <span class="product-badge-label">PHARE 2026</span>
                 </div>
                 <div class="product-info">
-                    <p class="product-cat">👕 T-Shirt Unisexe</p>
-                    <p class="product-name">T-Shirt Classic Iris</p>
-                    <p class="product-desc">Incontournable de la collection. Coton doux et résistant. Disponible en 12 couleurs.</p>
-                    <p class="product-price">180 DH</p>
+                    <p class="product-category">Streetwear Premium</p>
+                    <h3 class="product-name">T-Shirt Iris 7 Edition 2026</h3>
+                    <p class="product-description">Coton bio 100% ultra-premium. Broderie dorée. Design minimaliste futuriste.</p>
+                    <div class="product-footer">
+                        <div class="product-price">280 DH</div>
+                        <button class="product-btn">Commander</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="product-card" tabindex="0" data-aos="fade-up" data-aos-delay="120" data-aos-duration="800">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1503224613038-3d0e25f39f6e?auto=format&fit=crop&w=800&q=80" alt="T-Shirt Graffiti Art">
-                    <span class="product-badge">ART</span>
+            <!-- Product 2 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1542272604-787c62d465d1?auto=format&fit=crop&w=600&q=80" alt="Pantalon Cargo 2026">
+                    <span class="product-badge-label">BEST SELLER</span>
                 </div>
                 <div class="product-info">
-                    <p class="product-cat">🎨 T-Shirt Art</p>
-                    <p class="product-name">T-Shirt Graffiti Art</p>
-                    <p class="product-desc">Impression haute qualité. Design exclusif avec effet vintage. Limited edition disponible.</p>
-                    <p class="product-price">260 DH</p>
+                    <p class="product-category">Bas Tactique</p>
+                    <h3 class="product-name">Pantalon Cargo Empire 2026</h3>
+                    <p class="product-description">9 poches intelligentes. Matière respirante et durable. Coupe ultra-moderne.</p>
+                    <div class="product-footer">
+                        <div class="product-price">650 DH</div>
+                        <button class="product-btn">Commander</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="product-card" tabindex="0" data-aos="fade-up" data-aos-delay="240" data-aos-duration="800">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80" alt="T-Shirt Stripe Empire">
-                    <span class="product-badge">RAYÉ</span>
+            <!-- Product 3 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" alt="Hoodie Premium">
+                    <span class="product-badge-label">NOUVEAU</span>
                 </div>
                 <div class="product-info">
-                    <p class="product-cat">🖤 T-Shirt Rayé</p>
-                    <p class="product-name">T-Shirt Stripe Empire</p>
-                    <p class="product-desc">Rayures contrastées élégantes. Coupe ajustée moderne. Parfait pour la saison.</p>
-                    <p class="product-price">210 DH</p>
+                    <p class="product-category">Vêtement Chaud</p>
+                    <h3 class="product-name">Hoodie Empire Deluxe</h3>
+                    <p class="product-description">Tissu molletonné ultra-doux. Capuche ajustée. Poches spacieuses.</p>
+                    <div class="product-footer">
+                        <div class="product-price">780 DH</div>
+                        <button class="product-btn">Commander</button>
+                    </div>
                 </div>
             </div>
 
+            <!-- Product 4 -->
+            <div class="product-card" data-aos="fade-up" data-aos-duration="800">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1551028719-00167b16ebc5?auto=format&fit=crop&w=600&q=80" alt="Jacket Bomber">
+                    <span class="product-badge-label">TENDANCE</span>
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Vêtement Extérieur</p>
+                    <h3 class="product-name">Jacket Iris Bomber 2026</h3>
+                    <p class="product-description">Imperméable et respirant. Fermeture éclair YKK. Design intemporel.</p>
+                    <div class="product-footer">
+                        <div class="product-price">1050 DH</div>
+                        <button class="product-btn">Commander</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1528795055-98e3b5e9e3d4?auto=format&fit=crop&w=600&q=80" alt="Sweatpant">
+                    <span class="product-badge-label">CONFORT +</span>
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Bas Confort</p>
+                    <h3 class="product-name">Sweatpant Signature Elite</h3>
+                    <p class="product-description">Confort maximal garanti. Poches latérales profondes. Stretch 4D.</p>
+                    <div class="product-footer">
+                        <div class="product-price">580 DH</div>
+                        <button class="product-btn">Commander</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" alt="Sneakers">
+                    <span class="product-badge-label">LIMITED</span>
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Chaussures</p>
+                    <h3 class="product-name">Sneakers Iris Neon 2026</h3>
+                    <p class="product-description">Design futuriste luminescent. Semelle ergonomique premium. Ultra légères.</p>
+                    <div class="product-footer">
+                        <div class="product-price">1200 DH</div>
+                        <button class="product-btn">Commander</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- SECTION PANTALONS -->
-    <section id="pantalons" class="container">
-        <h2 class="section-title" data-aos="fade-right">Collection Pantalons</h2>
-        <div class="shop-grid">
+    <!-- FEATURES SECTION -->
+    <section class="features-section" id="features">
+        <div class="section-header">
+            <div class="section-badge">🎁 NOS AVANTAGES</div>
+            <h2 class="section-title">Pourquoi IRIS 7 ?</h2>
+            <p class="section-desc">L'excellence à travers chaque détail de votre expérience d'achat.</p>
+        </div>
 
-            <div class="product-card" tabindex="0" data-aos="fade-up" data-aos-duration="800">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1506629082847-11d3e392e467?auto=format&fit=crop&w=800&q=80" alt="Jeans Slim Fit">
-                    <span class="product-badge">CLASSIQUE</span>
-                </div>
-                <div class="product-info">
-                    <p class="product-cat">👖 Jeans Slim</p>
-                    <p class="product-name">Jeans Slim Fit Premium</p>
-                    <p class="product-desc">Denim importé de qualité supérieure. Taille normale confortable. Coupe slim intemporelle.</p>
-                    <p class="product-price">620 DH</p>
-                </div>
+        <div class="features-grid">
+            <div class="feature-card" data-aos="fade-up" data-aos-duration="800">
+                <div class="feature-icon">✨</div>
+                <h3 class="feature-title">Qualité Premium</h3>
+                <p class="feature-desc">Matériaux d'exception sélectionnés avec soin. Textile bio et durable.</p>
             </div>
 
-            <div class="product-card" tabindex="0" data-aos="fade-up" data-aos-delay="120" data-aos-duration="800">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1542272604-787c62d465d1?auto=format&fit=crop&w=800&q=80" alt="Cargo Tactical Deluxe">
-                    <span class="product-badge">TACTIQUE</span>
-                </div>
-                <div class="product-info">
-                    <p class="product-cat">🎖️ Cargo Tactical</p>
-                    <p class="product-name">Cargo Tactical Deluxe</p>
-                    <p class="product-desc">Multiples poches de rangement. Matière durable et respirante. Confort optimal.</p>
-                    <p class="product-price">640 DH</p>
-                </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+                <div class="feature-icon">🚀</div>
+                <h3 class="feature-title">Innovation 2026</h3>
+                <p class="feature-desc">Technologies avant-gardistes. Design futuriste. Tendances mondiales.</p>
             </div>
 
-            <div class="product-card" tabindex="0" data-aos="fade-up" data-aos-delay="240" data-aos-duration="800">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1598965675246-b8d11d881b13?auto=format&fit=crop&w=800&q=80" alt="Jogger Comfort Iris">
-                    <span class="product-badge">CONFORT</span>
-                </div>
-                <div class="product-info">
-                    <p class="product-cat">👟 Jogger</p>
-                    <p class="product-name">Jogger Comfort Iris</p>
-                    <p class="product-desc">Matière élastique ultra-douce. Poches profondes. Parfait pour le sport ou le casual.</p>
-                    <p class="product-price">450 DH</p>
-                </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Livraison Ultra Rapide</h3>
+                <p class="feature-desc">24h à 48h partout au Maroc. Suivi en temps réel. Gratuit +100DH.</p>
             </div>
 
+            <div class="feature-card" data-aos="fade-up" data-aos-duration="800">
+                <div class="feature-icon">🛡️</div>
+                <h3 class="feature-title">Garantie Totale</h3>
+                <p class="feature-desc">100% satisfait ou remboursé. Support client 24/7. Échange gratuit.</p>
+            </div>
+
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+                <div class="feature-icon">💎</div>
+                <h3 class="feature-title">Exclusivité</h3>
+                <p class="feature-desc">Collections limitées. Designs uniques. Numérotation officielle.</p>
+            </div>
+
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                <div class="feature-icon">🌍</div>
+                <h3 class="feature-title">Responsabilité</h3>
+                <p class="feature-desc">Marque éco-responsable. Production éthique. Impact positif.</p>
+            </div>
         </div>
     </section>
 
-    <!-- SECTION MAILLOTS -->
-    <section id="maillots" class="container">
-        <h2 class="section-title" data-aos="fade-right">Collection Maillots</h2>
-        <div class="shop-grid">
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="section-header">
+            <div class="section-badge">⭐ SATISFACTION</div>
+            <h2 class="section-title">Nos Clients Adorent IRIS 7</h2>
+            <p class="section-desc">Des milliers de clients satisfaits à travers le Maroc nous font confiance.</p>
+        </div>
 
-            <div class="product-card" tabindex="0" data-aos="fade-up" data-aos-duration="800">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1607618667266-b1c03de64d4c?auto=format&fit=crop&w=800&q=80" alt="Maillot Sport Pro">
-                    <span class="product-badge">SPORT</span>
-                </div>
-                <div class="product-info">
-                    <p class="product-cat">⚽ Maillot Sport</p>
-                    <p class="product-name">Maillot Sport Pro</p>
-                    <p class="product-desc">Tissu respirant haute performance. Technologie anti-sueur. Design épuré et moderne.</p>
-                    <p class="product-price">380 DH</p>
+        <div class="testimonials-grid">
+            <div class="testimonial-card" data-aos="fade-up" data-aos-duration="800">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"La qualité est exceptionnelle ! J'ai commandé 3 pièces et j'en suis complètement satisfait. Le design est vraiment unique et la livraison a été très rapide."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AM</div>
+                    <div class="author-info">
+                        <h4>Ahmed Mansouri</h4>
+                        <p>Casablanca</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="product-card" tabindex="0" data-aos="fade-up" data-aos-delay="120" data-aos-duration="800">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80" alt="Maillot Basketball Edition">
-                    <span class="product-badge">BASKET</span>
-                </div>
-                <div class="product-info">
-                    <p class="product-cat">🏀 Maillot Basketball</p>
-                    <p class="product-name">Maillot Basketball Edition</p>
-                    <p class="product-desc">Coupe décontractée spacieuse. Respirabilité maximale. Parfait pour jouer ou supporter.</p>
-                    <p class="product-price">420 DH</p>
-                </div>
-            </div>
-
-            <div class="product-card" tabindex="0" data-aos="fade-up" data-aos-delay="240" data-aos-duration="800">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80" alt="Maillot Training Iris">
-                    <span class="product-badge">TRAINING</span>
-                </div>
-                <div class="product-info">
-                    <p class="product-cat">🏋️ Maillot Training</p>
-                    <p class="product-name">Maillot Training Iris</p>
-                    <p class="product-desc">Performance maximale à l'entraînement. Technologie 4-way stretch. Ultra léger et flexible.</p>
-                    <p class="product-price">360 DH</p>
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"IRIS 7 c'est du sérieux ! Le service client est impeccable, la qualité des tissus incroyable. Je recommande vivement à tous mes amis."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SR</div>
+                    <div class="author-info">
+                        <h4>Sara Bennani</h4>
+                        <p>Marrakech</p>
+                    </div>
                 </div>
             </div>
 
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Le hoodie que j'ai acheté est maintenant mon vêtement préféré ! Confortable, élégant, et le prix est très compétitif. Merci IRIS 7 !"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">KZ</div>
+                    <div class="author-info">
+                        <h4>Karim Zaoui</h4>
+                        <p>Rabat</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- BOUTON WHATSAPP FAB -->
-    <a class="fab-wa" href="https://wa.me/212772727472" target="_blank" title="Discuter sur WhatsApp" aria-label="WhatsApp">
-        <svg width="34" height="34" viewBox="0 0 32 32" fill="currentColor">
-            <path d="M16 2.9a13.025 13.025 0 0 0-11.049 19.666L2.1 30l7.67-2.816A13.025 13.025 0 1 0 16 2.9zm6.549 19.031a10.23 10.23 0 0 1-8.822 2.504l-.629-.139-4.543 1.669 1.602-4.369-.163-.64a10.23 10.23 0 1 1 11.555-.025z"></path>
-        </svg>
-    </a>
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Prêt à Rejoindre l'Empire IRIS 7 ?</h2>
+            <p>Découvrez l'excellence du textile premium avec un design avant-gardiste. Collection limitée 2026 disponible maintenant !</p>
+            <div class="cta-buttons">
+                <a href="#collection" class="btn-white">Voir la collection</a>
+                <a href="https://wa.me/212772727472" target="_blank" class="btn-white">Commander sur WhatsApp</a>
+            </div>
+        </div>
+    </section>
 
     <!-- FOOTER -->
-    <footer>
-        <h2 data-aos="fade-up">CONTACTER LE FONDATEUR</h2>
-        <a href="tel:+212772727472" class="contact-big" data-aos="zoom-in" data-aos-delay="150">+212 772 727 472</a>
-        <a href="mailto:mokhtarijad100@gmail.com" class="footer-mail" data-aos="fade-up" data-aos-delay="250">mokhtarijad100@gmail.com</a>
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>IRIS 7</h3>
+                <p>L'empire du textile premium. Collection 2026. Design futuriste. Qualité exceptionnelle. Livraison ultra-rapide.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#collection">Collection</a></li>
+                    <li><a href="#features">Avantages</a></li>
+                    <li><a href="#testimonials">Avis clients</a></li>
+                    <li><a href="#footer">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Légal</h4>
+                <ul>
+                    <li><a href="#">CGV</a></li>
+                    <li><a href="#">Confidentialité</a></li>
+                    <li><a href="#">Retours</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+212772727472">+212 772 727 472</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:mokhtarijad100@gmail.com">mokhtarijad100@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <a href="#">Maroc</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-copyright">© 2026 IRIS 7 by Mokhtari Jad. Tous droits réservés. Créé par Skilipo-web.</p>
+            <div class="footer-socials">
+                <a href="https://www.instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com" target="_blank" class="social-link"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.twitter.com" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="https://wa.me/212772727472" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
     </footer>
 
+    <!-- WHATSAPP FAB -->
+    <a href="https://wa.me/212772727472" target="_blank" class="fab-whatsapp" title="Discuter sur WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- SCROLL TO TOP -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-        // Initialiser AOS avec animations fluides
+        // Initialize AOS
         AOS.init({
-            duration: 1200,
+            duration: 1000,
             once: false,
             offset: 100,
-            easing: 'ease-in-out-cubic'
+            easing: 'ease-out-cubic'
         });
 
-        // Effet de scroll sur la nav
-        let lastScrollTop = 0;
-        const navbar = document.querySelector('nav');
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
 
         window.addEventListener('scroll', () => {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
             if (scrollTop > 100) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                navbar.style.backdropFilter = 'blur(15px)';
+                navbar.classList.add('scrolled');
             } else {
-                navbar.style.background = 'var(--nav-bg)';
-                navbar.style.backdropFilter = 'blur(10px)';
+                navbar.classList.remove('scrolled');
             }
             
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            lastScroll = scrollTop;
+
+            // Scroll to top button
+            const scrollTop_ = document.getElementById('scrollTop');
+            if (scrollTop > 300) {
+                scrollTop_.classList.add('show');
+            } else {
+                scrollTop_.classList.remove('show');
+            }
         });
 
-        // Smooth scroll pour les liens de navigation
+        // Scroll to top
+        document.getElementById('scrollTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Mobile menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.style.display = 'none';
+            });
+        });
+
+        // Product button click
+        document.querySelectorAll('.product-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                const productName = this.closest('.product-card').querySelector('.product-name').textContent;
+                const productPrice = this.closest('.product-card').querySelector('.product-price').textContent;
+                const message = `Bonjour, je souhaite commander: ${productName} - ${productPrice}`;
+                window.open(`https://wa.me/212772727472?text=${encodeURIComponent(message)}`, '_blank');
             });
         });
 
-        // Animation des produits au scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.product-card').forEach(card => {
-            observer.observe(card);
-        });
-
-        // Feedback tactile sur mobile
-        document.querySelectorAll('.btn-black, .product-card, .fab-wa').forEach(element => {
-            element.addEventListener('touchstart', function() {
-                this.style.transform = this.style.transform + ' scale(0.98)';
-            });
-            element.addEventListener('touchend', function() {
-                this.style.transform = this.style.transform.replace(' scale(0.98)', '');
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            document.querySelectorAll('.floating-card').forEach((card, index) => {
+                card.style.transform = `translateY(${scrolled * 0.05 * (index + 1)}px)`;
             });
         });
     </script>
