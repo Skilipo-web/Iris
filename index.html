@@ -3,120 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iris 7 | Excellence & Gestion</title>
+    <title>Iris 7 | Expérience Ultime</title>
     <link href="https://googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0b0f1a; color: white; overflow-x: hidden; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #070a13; color: white; overflow-x: hidden; }
 
-        /* Animation Flash d'entrée (Style Guichet) */
+        /* Fond de particules */
+        #particles-js { position: fixed; width: 100%; height: 100%; z-index: -1; top: 0; left: 0; }
+
+        /* Loader Rideau (Style Guichet) */
         .loader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(45deg, #8a2be2, #da70d6); z-index: 9999;
-            animation: slideOut 1s cubic-bezier(0.85, 0, 0.15, 1) forwards 0.6s;
+            background: linear-gradient(135deg, #8a2be2, #da70d6); z-index: 9999;
+            animation: curtainReveal 1.2s cubic-bezier(1, 0, 0, 1) forwards;
+        }
+        @keyframes curtainReveal { 
+            0% { transform: scaleY(1); } 
+            100% { transform: scaleY(0); } 
         }
 
-        /* Navigation */
+        /* Nav Flottante */
         nav { 
-            position: fixed; top: 0; width: 100%; padding: 20px 8%; 
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 1200px; padding: 15px 35px; 
             display: flex; justify-content: space-between; align-items: center; 
-            z-index: 1000; backdrop-filter: blur(20px); background: rgba(11, 15, 26, 0.7);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            z-index: 1000; backdrop-filter: blur(20px); 
+            background: rgba(255, 255, 255, 0.05); border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .logo { font-weight: 800; font-size: 1.8rem; background: linear-gradient(to right, #fff, #da70d6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
-        .nav-links a { color: white; text-decoration: none; margin-left: 25px; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
-        .nav-links a:hover { color: #da70d6; }
+        .logo { font-weight: 800; font-size: 1.5rem; color: #8a2be2; text-decoration: none; }
 
-        /* Sections */
-        section { padding: 120px 10%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
-        h2 { font-size: 3.5rem; font-weight: 800; margin-bottom: 50px; text-align: center; }
+        /* Hero */
+        section { min-height: 100vh; padding: 120px 10%; display: flex; flex-direction: column; justify-content: center; position: relative; }
+        h1 { font-size: clamp(3rem, 10vw, 6rem); font-weight: 800; line-height: 0.9; margin-bottom: 20px; }
+        .gradient-text { background: linear-gradient(180deg, #fff 30%, #8a2be2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        /* Grille d'Articles (Style E-commerce moderne) */
-        .items-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .item-card { 
-            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); 
-            border-radius: 25px; overflow: hidden; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+        /* Cartes de Produits avec Tilt 3D */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 60px; perspective: 1000px; }
+        .card { 
+            background: rgba(17, 24, 39, 0.8); border-radius: 32px; padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.1s, border-color 0.4s, box-shadow 0.4s;
+            transform-style: preserve-3d;
         }
-        .item-card:hover { transform: translateY(-15px); border-color: #8a2be2; box-shadow: 0 25px 50px rgba(138, 43, 226, 0.2); }
-        .item-img { width: 100%; height: 220px; background: #1e293b; display: flex; align-items: center; justify-content: center; font-size: 4rem; }
-        .item-content { padding: 25px; }
-        .price-tag { color: #8a2be2; font-weight: 800; font-size: 1.4rem; margin-top: 15px; display: block; }
+        .card:hover { border-color: #8a2be2; box-shadow: 0 40px 80px rgba(138, 43, 226, 0.3); }
 
-        /* Pied de page / Contact */
-        footer { background: #070a13; padding: 60px 10%; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
-        .contact-info { margin-top: 20px; opacity: 0.6; font-size: 0.9rem; }
+        .product-img { width: 100%; height: 200px; border-radius: 20px; object-fit: cover; margin-bottom: 20px; transform: translateZ(30px); }
+        h3 { font-size: 1.8rem; margin-bottom: 10px; transform: translateZ(20px); }
+        .price { color: #8a2be2; font-weight: 800; font-size: 1.5rem; margin-top: 20px; display: block; transform: translateZ(10px); }
 
-        @keyframes slideOut { to { transform: translateX(100%); } }
+        /* Animation de surbrillance */
+        .btn {
+            display: inline-block; padding: 20px 50px; background: #8a2be2; color: white;
+            text-decoration: none; border-radius: 100px; font-weight: 800; margin-top: 40px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .btn:hover { transform: scale(1.1) translateY(-5px); box-shadow: 0 0 40px rgba(138, 43, 226, 0.6); }
+
     </style>
 </head>
 <body>
+    <div id="particles-js"></div>
     <div class="loader"></div>
 
     <nav>
         <a href="#" class="logo">IRIS 7</a>
-        <div class="nav-links">
-            <a href="#accueil">Accueil</a>
-            <a href="#articles">Articles</a>
-            <a href="#apropos">À Propos</a>
-            <a href="#contact">Contact</a>
+        <div style="display: flex; gap: 20px;">
+            <a href="#accueil" style="color: white; text-decoration: none; font-weight: 600;">Accueil</a>
+            <a href="#produits" style="color: white; text-decoration: none; font-weight: 600;">Produits</a>
         </div>
     </nav>
 
-    <!-- ACCUEIL -->
     <section id="accueil">
-        <h1 data-aos="fade-right" style="font-size: 5rem; line-height: 1;">Bienvenue dans <br><span style="color: #8a2be2;">l'écosystème Iris.</span></h1>
-        <p data-aos="fade-right" data-aos-delay="200" style="font-size: 1.4rem; max-width: 600px; margin: 30px 0; opacity: 0.7;">
-            La puissance de la gestion Iris 7 alliée à une interface d'exception conçue par Skilipo-web.
-        </p>
-        <a href="#articles" class="logo" style="font-size: 1rem; border: 1px solid #8a2be2; padding: 15px 30px; border-radius: 50px; display: inline-block;">Découvrir nos articles</a>
-    </section>
-
-    <!-- ARTICLES -->
-    <section id="articles">
-        <h2 data-aos="fade-up">Nos Articles de Vente</h2>
-        <div class="items-grid">
-            <div class="item-card" data-aos="zoom-in">
-                <div class="item-img">📦</div>
-                <div class="item-content">
-                    <h3>Module Gestion Pro</h3>
-                    <p>Optimisez votre inventaire avec la technologie Iris 7.</p>
-                    <span class="price-tag">Sur devis</span>
-                </div>
-            </div>
-            <div class="item-card" data-aos="zoom-in" data-aos-delay="200">
-                <div class="item-img">💻</div>
-                <div class="item-content">
-                    <h3>Interface Client Iris</h3>
-                    <p>L'accès premium pour vos utilisateurs finaux.</p>
-                    <span class="price-tag">199 DH / mois</span>
-                </div>
-            </div>
-            <div class="item-card" data-aos="zoom-in" data-aos-delay="400">
-                <div class="item-img">🛡️</div>
-                <div class="item-content">
-                    <h3>Pack Sécurité Skilipo</h3>
-                    <p>Protection avancée de vos données professionnelles.</p>
-                    <span class="price-tag">450 DH / an</span>
-                </div>
-            </div>
+        <h1 data-aos="zoom-out-up"><span class="gradient-text">IRIS 7 :</span><br>LE FUTUR EST LÀ.</h1>
+        <p data-aos="fade-right" data-aos-delay="400" style="font-size: 1.5rem; opacity: 0.7; max-width: 600px;">La nouvelle référence en gestion et vente digitale. Une interface fluide, une puissance absolue.</p>
+        <div data-aos="fade-up" data-aos-delay="600">
+            <a href="#produits" class="btn">Explorer le catalogue</a>
         </div>
     </section>
 
-    <!-- CONTACT & FOOTER -->
-    <footer id="contact">
-        <h2>Contactez Skilipo-web</h2>
-        <p>Prêt à transformer votre business avec Iris 7 ?</p>
-        <div class="contact-info">
-            <p>📧 contact@skilipo-web.com</p>
-            <p>🌐 Propulsé par la technologie Iris Odoo</p>
-            <p style="margin-top: 30px;">© 2024 Iris 7 - Tous droits réservés.</p>
+    <section id="produits">
+        <h2 style="font-size: 4rem;" data-aos="fade-right">Nos Produits</h2>
+        <div class="grid">
+            <!-- Produit 1 -->
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://unsplash.com" class="product-img">
+                <h3>Pack Gestion Pro</h3>
+                <p style="opacity: 0.6;">Automatisation complète de votre business avec Iris 7.</p>
+                <span class="price">Sur Devis</span>
+            </div>
+            <!-- Produit 2 -->
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://unsplash.com" class="product-img">
+                <h3>Interface Client</h3>
+                <p style="opacity: 0.6;">Une expérience utilisateur fluide et moderne pour vos clients.</p>
+                <span class="price">199 DH / mois</span>
+            </div>
+            <!-- Produit 3 -->
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <img src="https://unsplash.com" class="product-img">
+                <h3>Sécurité Skilipo</h3>
+                <p style="opacity: 0.6;">Protection maximale de vos données professionnelles.</p>
+                <span class="price">450 DH / an</span>
+            </div>
         </div>
-    </footer>
+    </section>
 
     <script src="https://cloudflare.com"></script>
+    <script src="https://jsdelivr.net"></script>
+    <script src="https://cloudflare.com"></script>
     <script>
-        AOS.init({ duration: 1000, mirror: true });
+        AOS.init({ duration: 1000, once: false });
+
+        // Particules de fond
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60 },
+                "color": { "value": "#8a2be2" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.3 },
+                "size": { "value": 3 },
+                "line_linked": { "enable": true, "distance": 150, "color": "#8a2be2", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 1.5 }
+            },
+            "interactivity": { "events": { "onhover": { "enable": true, "mode": "grab" } } }
+        });
+
+        // Effet Tilt 3D sur les cartes
+        VanillaTilt.init(document.querySelectorAll(".card"), { max: 15, speed: 400, glare: true, "max-glare": 0.2 });
     </script>
 </body>
 </html>
