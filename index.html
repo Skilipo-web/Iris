@@ -24,15 +24,6 @@
             --tertiary: #06b6d4;
             --dark: #0f172a;
             --light: #f8fafc;
-            --gray-dark: #1e293b;
-            --gray-light: #e2e8f0;
-            --accent: #f59e0b;
-            --success: #10b981;
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
         }
 
         html {
@@ -46,6 +37,112 @@
             color: #f8fafc;
             overflow-x: hidden;
             line-height: 1.6;
+        }
+
+        /* SPLASH SCREEN INTRO */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeOutScreen 0.5s ease-in-out 3.5s forwards;
+        }
+
+        @keyframes fadeOutScreen {
+            from {
+                opacity: 1;
+                visibility: visible;
+            }
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .splash-content {
+            position: relative;
+            text-align: center;
+        }
+
+        .iris-logo-splash {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #7c3aed, #ec4899, #06b6d4, #f59e0b);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite, logoExplode 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s;
+            letter-spacing: -3px;
+            filter: drop-shadow(0 0 30px rgba(124, 58, 237, 0.5));
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes logoExplode {
+            0% {
+                transform: scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2) rotate(10deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        /* Particle explosion */
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleExplode 1.5s ease-out forwards;
+        }
+
+        @keyframes particleExplode {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(0);
+            }
+        }
+
+        .splash-subtitle {
+            font-size: 1.5rem;
+            color: #06b6d4;
+            margin-top: 30px;
+            animation: slideInUp 0.8s ease 1s both;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* NAVIGATION */
@@ -70,7 +167,6 @@
             box-shadow: 0 10px 40px rgba(124, 58, 237, 0.15);
             border-bottom-color: rgba(124, 58, 237, 0.3);
             height: 75px;
-            padding: 0 6%;
         }
 
         .logo {
@@ -83,7 +179,6 @@
             background-clip: text;
             letter-spacing: -1px;
             cursor: pointer;
-            position: relative;
             animation: logoFloat 3s ease-in-out infinite;
         }
 
@@ -107,22 +202,6 @@
             font-size: 0.95rem;
             position: relative;
             transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .nav-links a:hover::before {
-            left: 100%;
         }
 
         .nav-links a:hover {
@@ -144,15 +223,12 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 0.9rem;
-        }
-
-        .btn-small.primary {
             background: linear-gradient(135deg, #7c3aed, #ec4899);
             color: white;
             box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
         }
 
-        .btn-small.primary:hover {
+        .btn-small:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 30px rgba(124, 58, 237, 0.4);
         }
@@ -221,14 +297,8 @@
         }
 
         @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .hero-badge {
@@ -245,14 +315,8 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-desc {
@@ -323,102 +387,6 @@
             transform: translateY(-5px);
         }
 
-        .hero-stats {
-            display: flex;
-            gap: 50px;
-            margin-top: 60px;
-            animation: fadeInUp 0.8s ease 0.5s both;
-        }
-
-        .stat {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #7c3aed, #06b6d4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: #94a3b8;
-            margin-top: 8px;
-        }
-
-        .hero-visual {
-            position: relative;
-            height: 500px;
-            animation: slideInRight 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .floating-card {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(124, 58, 237, 0.2);
-            border-radius: 20px;
-            padding: 20px;
-            animation: float 4s ease-in-out infinite;
-        }
-
-        .floating-card:nth-child(1) {
-            width: 280px;
-            top: 50px;
-            right: 0;
-            animation-delay: 0s;
-        }
-
-        .floating-card:nth-child(2) {
-            width: 320px;
-            bottom: 80px;
-            left: 0;
-            animation-delay: 1s;
-        }
-
-        .floating-card:nth-child(3) {
-            width: 240px;
-            bottom: 120px;
-            right: 40px;
-            animation-delay: 2s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .card-icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
-
-        .card-title {
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-        }
-
-        .card-desc {
-            font-size: 0.9rem;
-            color: #cbd5e1;
-        }
-
         /* COLLECTION SECTION */
         .collection-section {
             padding: 120px 8%;
@@ -465,7 +433,7 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 40px;
             position: relative;
             z-index: 1;
@@ -480,7 +448,6 @@
             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
             cursor: pointer;
             position: relative;
-            group: 'card';
         }
 
         .product-card::before {
@@ -515,6 +482,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
         }
 
         .product-image img {
@@ -617,6 +585,228 @@
             transform: translateY(-2px);
         }
 
+        /* MODAL PRODUIT */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 5000;
+            animation: fadeIn 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(26, 31, 58, 0.95));
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 30px;
+            padding: 60px;
+            max-width: 900px;
+            width: 90%;
+            position: relative;
+            animation: modalSlideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.7) translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid rgba(124, 58, 237, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #7c3aed;
+            transition: all 0.3s ease;
+            z-index: 5001;
+        }
+
+        .modal-close:hover {
+            background: rgba(124, 58, 237, 0.4);
+            transform: rotate(90deg);
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            animation: imageZoom 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes imageZoom {
+            from {
+                opacity: 0;
+                transform: scale(0.8) rotate(-5deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0);
+            }
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-details {
+            animation: detailsSlide 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+        }
+
+        @keyframes detailsSlide {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .modal-details h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #7c3aed, #ec4899, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-category {
+            font-size: 0.9rem;
+            color: #7c3aed;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .modal-description {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(124, 58, 237, 0.1);
+            border-left: 3px solid #7c3aed;
+            border-radius: 12px;
+        }
+
+        .modal-specs {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .modal-specs li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .modal-specs li:before {
+            content: '✓';
+            color: #06b6d4;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .modal-price {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .modal-btn {
+            padding: 16px 32px;
+            border: none;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            flex: 1;
+        }
+
+        .modal-btn.buy {
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            color: white;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+        }
+
+        .modal-btn.buy:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.4);
+        }
+
+        .modal-btn.close {
+            background: rgba(124, 58, 237, 0.1);
+            color: #7c3aed;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+
+        .modal-btn.close:hover {
+            background: rgba(124, 58, 237, 0.2);
+        }
+
         /* FEATURES SECTION */
         .features-section {
             padding: 120px 8%;
@@ -669,143 +859,6 @@
             line-height: 1.8;
         }
 
-        /* TESTIMONIALS */
-        .testimonials-section {
-            padding: 120px 8%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(124, 58, 237, 0.2);
-            border-radius: 20px;
-            padding: 40px;
-            transition: all 0.5s ease;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(124, 58, 237, 0.5);
-            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.15);
-        }
-
-        .stars {
-            color: #f59e0b;
-            font-size: 1.2rem;
-            margin-bottom: 16px;
-            letter-spacing: 4px;
-        }
-
-        .testimonial-text {
-            color: #cbd5e1;
-            margin-bottom: 24px;
-            line-height: 1.8;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #7c3aed, #ec4899);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        .author-info h4 {
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .author-info p {
-            font-size: 0.85rem;
-            color: #94a3b8;
-        }
-
-        /* CTA SECTION */
-        .cta-section {
-            padding: 120px 8%;
-            background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.1"><path d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/></g></g></svg>');
-            opacity: 0.5;
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 1;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .cta-section h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .cta-section p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            opacity: 0.95;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-white {
-            padding: 16px 48px;
-            background: white;
-            color: #7c3aed;
-            border: none;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-white:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-
         /* FOOTER */
         footer {
             background: linear-gradient(135deg, #0f172a, #1a1f3a);
@@ -813,17 +866,6 @@
             border-top: 1px solid rgba(124, 58, 237, 0.2);
             position: relative;
             overflow: hidden;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(124, 58, 237, 0.1), transparent);
-            filter: blur(100px);
         }
 
         .footer-content {
@@ -986,14 +1028,8 @@
         }
 
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.5);
-                opacity: 0;
-            }
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
         }
 
         /* SCROLL TO TOP */
@@ -1025,13 +1061,8 @@
 
         /* RESPONSIVE */
         @media (max-width: 1024px) {
-            .hero-grid {
+            .modal-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .hero-visual {
-                height: 350px;
             }
 
             .footer-content {
@@ -1041,131 +1072,44 @@
         }
 
         @media (max-width: 768px) {
-            nav {
-                padding: 0 4%;
-            }
-
-            nav.scrolled {
-                padding: 0 4%;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .logo {
-                font-size: 1.5rem;
-            }
-
-            .hero {
-                padding: 100px 4% 60px;
-                margin-top: 60px;
-            }
-
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero-stats {
-                gap: 30px;
-            }
-
-            .collection-section,
-            .features-section,
-            .testimonials-section,
-            .cta-section,
-            footer {
-                padding: 80px 4%;
-            }
-
-            .products-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 25px;
-            }
-
-            .features-grid,
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .fab-whatsapp {
-                width: 60px;
-                height: 60px;
-                bottom: 30px;
-                right: 20px;
-                font-size: 1.5rem;
-            }
-
-            .scroll-top {
-                width: 45px;
-                height: 45px;
-                bottom: 30px;
-                left: 20px;
-            }
+            nav { padding: 0 4%; }
+            nav.scrolled { padding: 0 4%; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .logo { font-size: 1.5rem; }
+            .hero { padding: 100px 4% 60px; margin-top: 60px; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .collection-section, .features-section, footer { padding: 80px 4%; }
+            .products-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+            .features-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; gap: 40px; }
+            .footer-bottom { flex-direction: column; gap: 20px; }
+            .modal-content { padding: 40px; }
+            .modal-close { width: 40px; height: 40px; top: 20px; right: 20px; }
         }
 
         @media (max-width: 480px) {
-            .hero {
-                padding: 80px 3% 40px;
-                margin-top: 50px;
-            }
-
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .btn-primary,
-            .btn-secondary {
-                width: 100%;
-            }
-
-            .hero-stats {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
+            .hero { padding: 80px 3% 40px; margin-top: 50px; }
+            .hero-content h1 { font-size: 1.8rem; }
+            .hero-cta { flex-direction: column; }
+            .btn-primary, .btn-secondary { width: 100%; }
+            .products-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 2rem; }
+            .iris-logo-splash { font-size: 4rem; }
+            .modal-content { width: 95%; padding: 20px; }
+            .modal-buttons { flex-direction: column; }
         }
     </style>
 </head>
 <body>
+
+    <!-- SPLASH SCREEN WITH EXPLOSION -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-content">
+            <div class="iris-logo-splash" id="irisLogo">IRIS 7</div>
+            <div class="splash-subtitle">COLLECTION 2026</div>
+        </div>
+    </div>
 
     <!-- NAVIGATION -->
     <nav id="navbar">
@@ -1173,11 +1117,10 @@
         <div class="nav-links" id="navLinks">
             <a href="#collection">Collection 2026</a>
             <a href="#features">Avantages</a>
-            <a href="#testimonials">Avis clients</a>
             <a href="#footer">Contact</a>
         </div>
         <div class="nav-btn">
-            <a href="https://wa.me/212772727472" target="_blank" class="btn-small primary">Commander</a>
+            <a href="https://wa.me/212772727472" target="_blank" class="btn-small">Commander</a>
         </div>
         <div class="hamburger" id="hamburger">
             <span></span>
@@ -1190,44 +1133,16 @@
     <section class="hero">
         <div class="hero-grid">
             <div class="hero-content">
-                <div class="hero-badge">🚀 COLLECTION 2026</div>
+                <div class="hero-badge">🚀 COLLECTION PREMIUM 2026</div>
                 <h1>L'EMPIRE MOKHTARI JAD<br>RÉINVENTÉ</h1>
-                <p class="hero-desc">Découvrez la collection premium 2026. Design futuriste, qualité inégalée, animations numériques bluffantes. L'excellence redéfinie.</p>
+                <p class="hero-desc">Découvrez les dernières tendances 2026. Design futuriste, qualité inégalée, innovations spectaculaires. L'excellence redéfinie.</p>
                 <div class="hero-cta">
                     <a href="#collection" class="btn-primary">Voir la collection</a>
                     <a href="https://wa.me/212772727472" target="_blank" class="btn-secondary">Discuter maintenant</a>
                 </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <div class="stat-number">5K+</div>
-                        <div class="stat-label">Clients satisfaits</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Qualité garantie</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">24h</div>
-                        <div class="stat-label">Livraison</div>
-                    </div>
-                </div>
             </div>
-            <div class="hero-visual">
-                <div class="floating-card">
-                    <div class="card-icon">✨</div>
-                    <div class="card-title">Premium Quality</div>
-                    <div class="card-desc">Textile d'exception</div>
-                </div>
-                <div class="floating-card">
-                    <div class="card-icon">🎯</div>
-                    <div class="card-title">Design Moderne</div>
-                    <div class="card-desc">Tendance 2026</div>
-                </div>
-                <div class="floating-card">
-                    <div class="card-icon">⚡</div>
-                    <div class="card-title">Fast Delivery</div>
-                    <div class="card-desc">Ultra rapide</div>
-                </div>
+            <div style="text-align: center; font-size: 6rem; animation: float 4s ease-in-out infinite;">
+                ✨
             </div>
         </div>
     </section>
@@ -1235,147 +1150,153 @@
     <!-- COLLECTION SECTION -->
     <section class="collection-section" id="collection">
         <div class="section-header">
-            <div class="section-badge">💎 COLLECTION EXCLUSIVE</div>
-            <h2 class="section-title">Dernières Créations 2026</h2>
-            <p class="section-desc">Découvrez notre sélection exclusive de vêtements premium pour la saison 2026. Design avant-gardiste et qualité exceptionnelle.</p>
+            <div class="section-badge">💎 DERNIÈRES TENDANCES 2026</div>
+            <h2 class="section-title">Collection Exclusive</h2>
+            <p class="section-desc">Cliquez sur les images pour voir les détails complets de chaque produit premium.</p>
         </div>
 
         <div class="products-grid">
             <!-- Product 1 -->
             <div class="product-card" data-aos="fade-up" data-aos-duration="800">
-                <div class="product-image">
+                <div class="product-image" onclick="openModal(0)">
                     <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80" alt="T-Shirt Iris 7 2026">
                     <span class="product-badge-label">PHARE 2026</span>
                 </div>
                 <div class="product-info">
                     <p class="product-category">Streetwear Premium</p>
                     <h3 class="product-name">T-Shirt Iris 7 Edition 2026</h3>
-                    <p class="product-description">Coton bio 100% ultra-premium. Broderie dorée. Design minimaliste futuriste.</p>
+                    <p class="product-description">Coton bio 100% ultra-premium. Broderie dorée artisanale. Design minimaliste futuriste.</p>
                     <div class="product-footer">
                         <div class="product-price">280 DH</div>
-                        <button class="product-btn">Commander</button>
+                        <button class="product-btn" onclick="openModal(0)">Détails</button>
                     </div>
                 </div>
             </div>
 
             <!-- Product 2 -->
             <div class="product-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-                <div class="product-image">
+                <div class="product-image" onclick="openModal(1)">
                     <img src="https://images.unsplash.com/photo-1542272604-787c62d465d1?auto=format&fit=crop&w=600&q=80" alt="Pantalon Cargo 2026">
                     <span class="product-badge-label">BEST SELLER</span>
                 </div>
                 <div class="product-info">
                     <p class="product-category">Bas Tactique</p>
                     <h3 class="product-name">Pantalon Cargo Empire 2026</h3>
-                    <p class="product-description">9 poches intelligentes. Matière respirante et durable. Coupe ultra-moderne.</p>
+                    <p class="product-description">9 poches intelligentes avec technologie RFID. Matière respirante et durable. Coupe ultra-moderne.</p>
                     <div class="product-footer">
                         <div class="product-price">650 DH</div>
-                        <button class="product-btn">Commander</button>
+                        <button class="product-btn" onclick="openModal(1)">Détails</button>
                     </div>
                 </div>
             </div>
 
             <!-- Product 3 -->
             <div class="product-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
-                <div class="product-image">
+                <div class="product-image" onclick="openModal(2)">
                     <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" alt="Hoodie Premium">
                     <span class="product-badge-label">NOUVEAU</span>
                 </div>
                 <div class="product-info">
                     <p class="product-category">Vêtement Chaud</p>
-                    <h3 class="product-name">Hoodie Empire Deluxe</h3>
-                    <p class="product-description">Tissu molletonné ultra-doux. Capuche ajustée. Poches spacieuses.</p>
+                    <h3 class="product-name">Hoodie Empire Deluxe Pro</h3>
+                    <p class="product-description">Tissu molletonné ultra-doux avec certification EcoWear. Capuche ajustée ergonomique. Poches spacieuses.</p>
                     <div class="product-footer">
                         <div class="product-price">780 DH</div>
-                        <button class="product-btn">Commander</button>
+                        <button class="product-btn" onclick="openModal(2)">Détails</button>
                     </div>
                 </div>
             </div>
 
             <!-- Product 4 -->
             <div class="product-card" data-aos="fade-up" data-aos-duration="800">
-                <div class="product-image">
+                <div class="product-image" onclick="openModal(3)">
                     <img src="https://images.unsplash.com/photo-1551028719-00167b16ebc5?auto=format&fit=crop&w=600&q=80" alt="Jacket Bomber">
                     <span class="product-badge-label">TENDANCE</span>
                 </div>
                 <div class="product-info">
                     <p class="product-category">Vêtement Extérieur</p>
                     <h3 class="product-name">Jacket Iris Bomber 2026</h3>
-                    <p class="product-description">Imperméable et respirant. Fermeture éclair YKK. Design intemporel.</p>
+                    <p class="product-description">Imperméable certifié et respirant avec membrane Gore-Tex. Fermeture éclair YKK durable. Design intemporel.</p>
                     <div class="product-footer">
                         <div class="product-price">1050 DH</div>
-                        <button class="product-btn">Commander</button>
+                        <button class="product-btn" onclick="openModal(3)">Détails</button>
                     </div>
                 </div>
             </div>
 
             <!-- Product 5 -->
             <div class="product-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-                <div class="product-image">
+                <div class="product-image" onclick="openModal(4)">
                     <img src="https://images.unsplash.com/photo-1528795055-98e3b5e9e3d4?auto=format&fit=crop&w=600&q=80" alt="Sweatpant">
                     <span class="product-badge-label">CONFORT +</span>
                 </div>
                 <div class="product-info">
                     <p class="product-category">Bas Confort</p>
                     <h3 class="product-name">Sweatpant Signature Elite</h3>
-                    <p class="product-description">Confort maximal garanti. Poches latérales profondes. Stretch 4D.</p>
+                    <p class="product-description">Confort maximal garantie avec technologie thermo-régulante. Poches latérales profondes. Stretch 4D premium.</p>
                     <div class="product-footer">
                         <div class="product-price">580 DH</div>
-                        <button class="product-btn">Commander</button>
+                        <button class="product-btn" onclick="openModal(4)">Détails</button>
                     </div>
                 </div>
             </div>
 
             <!-- Product 6 -->
             <div class="product-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
-                <div class="product-image">
+                <div class="product-image" onclick="openModal(5)">
                     <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" alt="Sneakers">
                     <span class="product-badge-label">LIMITED</span>
                 </div>
                 <div class="product-info">
                     <p class="product-category">Chaussures</p>
                     <h3 class="product-name">Sneakers Iris Neon 2026</h3>
-                    <p class="product-description">Design futuriste luminescent. Semelle ergonomique premium. Ultra légères.</p>
+                    <p class="product-description">Design futuriste avec LED intégrée. Semelle ergonomique premium confortable. Ultra légères et stylées.</p>
                     <div class="product-footer">
                         <div class="product-price">1200 DH</div>
-                        <button class="product-btn">Commander</button>
+                        <button class="product-btn" onclick="openModal(5)">Détails</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- MODAL PRODUIT -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-close" onclick="closeModal()">✕</div>
+        </div>
+    </div>
+
     <!-- FEATURES SECTION -->
     <section class="features-section" id="features">
         <div class="section-header">
             <div class="section-badge">🎁 NOS AVANTAGES</div>
             <h2 class="section-title">Pourquoi IRIS 7 ?</h2>
-            <p class="section-desc">L'excellence à travers chaque détail de votre expérience d'achat.</p>
         </div>
 
         <div class="features-grid">
             <div class="feature-card" data-aos="fade-up" data-aos-duration="800">
                 <div class="feature-icon">✨</div>
-                <h3 class="feature-title">Qualité Premium</h3>
-                <p class="feature-desc">Matériaux d'exception sélectionnés avec soin. Textile bio et durable.</p>
+                <h3 class="feature-title">Qualité Premium 2026</h3>
+                <p class="feature-desc">Matériaux d'exception. Textile bio et durable. Certification internationale.</p>
             </div>
 
             <div class="feature-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
                 <div class="feature-icon">🚀</div>
-                <h3 class="feature-title">Innovation 2026</h3>
-                <p class="feature-desc">Technologies avant-gardistes. Design futuriste. Tendances mondiales.</p>
+                <h3 class="feature-title">Innovation Totale</h3>
+                <p class="feature-desc">Technologie futuriste. Design avant-gardiste. Tendances mondiales intégrées.</p>
             </div>
 
             <div class="feature-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
                 <div class="feature-icon">⚡</div>
-                <h3 class="feature-title">Livraison Ultra Rapide</h3>
-                <p class="feature-desc">24h à 48h partout au Maroc. Suivi en temps réel. Gratuit +100DH.</p>
+                <h3 class="feature-title">Livraison 24h</h3>
+                <p class="feature-desc">Partout au Maroc. Suivi en temps réel. Gratuit pour +100DH.</p>
             </div>
 
             <div class="feature-card" data-aos="fade-up" data-aos-duration="800">
                 <div class="feature-icon">🛡️</div>
-                <h3 class="feature-title">Garantie Totale</h3>
-                <p class="feature-desc">100% satisfait ou remboursé. Support client 24/7. Échange gratuit.</p>
+                <h3 class="feature-title">100% Satisfait</h3>
+                <p class="feature-desc">Remboursement garanti. Support 24/7. Échange gratuit.</p>
             </div>
 
             <div class="feature-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
@@ -1386,67 +1307,8 @@
 
             <div class="feature-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
                 <div class="feature-icon">🌍</div>
-                <h3 class="feature-title">Responsabilité</h3>
-                <p class="feature-desc">Marque éco-responsable. Production éthique. Impact positif.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- TESTIMONIALS SECTION -->
-    <section class="testimonials-section" id="testimonials">
-        <div class="section-header">
-            <div class="section-badge">⭐ SATISFACTION</div>
-            <h2 class="section-title">Nos Clients Adorent IRIS 7</h2>
-            <p class="section-desc">Des milliers de clients satisfaits à travers le Maroc nous font confiance.</p>
-        </div>
-
-        <div class="testimonials-grid">
-            <div class="testimonial-card" data-aos="fade-up" data-aos-duration="800">
-                <div class="stars">★★★★★</div>
-                <p class="testimonial-text">"La qualité est exceptionnelle ! J'ai commandé 3 pièces et j'en suis complètement satisfait. Le design est vraiment unique et la livraison a été très rapide."</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">AM</div>
-                    <div class="author-info">
-                        <h4>Ahmed Mansouri</h4>
-                        <p>Casablanca</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-                <div class="stars">★★★★★</div>
-                <p class="testimonial-text">"IRIS 7 c'est du sérieux ! Le service client est impeccable, la qualité des tissus incroyable. Je recommande vivement à tous mes amis."</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">SR</div>
-                    <div class="author-info">
-                        <h4>Sara Bennani</h4>
-                        <p>Marrakech</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
-                <div class="stars">★★★★★</div>
-                <p class="testimonial-text">"Le hoodie que j'ai acheté est maintenant mon vêtement préféré ! Confortable, élégant, et le prix est très compétitif. Merci IRIS 7 !"</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">KZ</div>
-                    <div class="author-info">
-                        <h4>Karim Zaoui</h4>
-                        <p>Rabat</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA SECTION -->
-    <section class="cta-section">
-        <div class="cta-content">
-            <h2>Prêt à Rejoindre l'Empire IRIS 7 ?</h2>
-            <p>Découvrez l'excellence du textile premium avec un design avant-gardiste. Collection limitée 2026 disponible maintenant !</p>
-            <div class="cta-buttons">
-                <a href="#collection" class="btn-white">Voir la collection</a>
-                <a href="https://wa.me/212772727472" target="_blank" class="btn-white">Commander sur WhatsApp</a>
+                <h3 class="feature-title">Éco-Responsable</h3>
+                <p class="feature-desc">Marque verte. Production éthique. Impact environnemental zéro.</p>
             </div>
         </div>
     </section>
@@ -1456,7 +1318,7 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <h3>IRIS 7</h3>
-                <p>L'empire du textile premium. Collection 2026. Design futuriste. Qualité exceptionnelle. Livraison ultra-rapide.</p>
+                <p>L'empire du textile premium 2026. Design futuriste. Qualité exceptionnelle. Innovation totale.</p>
             </div>
 
             <div class="footer-section">
@@ -1464,7 +1326,6 @@
                 <ul>
                     <li><a href="#collection">Collection</a></li>
                     <li><a href="#features">Avantages</a></li>
-                    <li><a href="#testimonials">Avis clients</a></li>
                     <li><a href="#footer">Contact</a></li>
                 </ul>
             </div>
@@ -1489,20 +1350,15 @@
                     <i class="fas fa-envelope"></i>
                     <a href="mailto:mokhtarijad100@gmail.com">mokhtarijad100@gmail.com</a>
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <a href="#">Maroc</a>
-                </div>
             </div>
         </div>
 
         <div class="footer-bottom">
             <p class="footer-copyright">© 2026 IRIS 7 by Mokhtari Jad. Tous droits réservés. Créé par Skilipo-web.</p>
             <div class="footer-socials">
-                <a href="https://www.instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com" target="_blank" class="social-link"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.twitter.com" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
                 <a href="https://wa.me/212772727472" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
             </div>
         </div>
     </footer>
@@ -1520,6 +1376,129 @@
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
+        // Product data
+        const products = [
+            {
+                name: "T-Shirt Iris 7 Edition 2026",
+                category: "Streetwear Premium",
+                price: "280 DH",
+                image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80",
+                description: "Le T-Shirt phare de la collection 2026. Coton bio 100% ultra-premium avec broderie dorée artisanale. Design minimaliste futuriste qui allie confort et style.",
+                specs: [
+                    "Coton bio 100% certifié",
+                    "Broderie dorée faite main",
+                    "Design exclusif 2026",
+                    "Disponible en 8 couleurs",
+                    "Taille XS à XXXL"
+                ]
+            },
+            {
+                name: "Pantalon Cargo Empire 2026",
+                category: "Bas Tactique",
+                price: "650 DH",
+                image: "https://images.unsplash.com/photo-1542272604-787c62d465d1?auto=format&fit=crop&w=600&q=80",
+                description: "Pantalon cargo révolutionnaire avec 9 poches intelligentes équipées de technologie RFID. Matière respirante et durable pour un confort maximum.",
+                specs: [
+                    "9 poches avec technologie RFID",
+                    "Matière respirante et imperméable",
+                    "Coupe ultra-moderne ajustée",
+                    "Fermeture éclair renforcée",
+                    "Garantie 2 ans"
+                ]
+            },
+            {
+                name: "Hoodie Empire Deluxe Pro",
+                category: "Vêtement Chaud",
+                price: "780 DH",
+                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80",
+                description: "Le hoodie le plus confortable jamais créé. Tissu molletonné ultra-doux avec certification EcoWear. Capuche ajustée ergonomique et poches spacieuses.",
+                specs: [
+                    "Tissu molletonné premium",
+                    "Certification EcoWear",
+                    "Capuche ergonomique ajustée",
+                    "Poches kangaroo spacieuses",
+                    "Cordon de serrage confortable"
+                ]
+            },
+            {
+                name: "Jacket Iris Bomber 2026",
+                category: "Vêtement Extérieur",
+                price: "1050 DH",
+                image: "https://images.unsplash.com/photo-1551028719-00167b16ebc5?auto=format&fit=crop&w=600&q=80",
+                description: "Veste bomber imperméable certifiée avec membrane Gore-Tex. Design intemporel et fermeture éclair YKK durable pour une qualité garantie.",
+                specs: [
+                    "Membrane Gore-Tex imperméable",
+                    "Fermeture éclair YKK durable",
+                    "Design bomber intemporel",
+                    "Poches latérales sécurisées",
+                    "Doublure thermique"
+                ]
+            },
+            {
+                name: "Sweatpant Signature Elite",
+                category: "Bas Confort",
+                price: "580 DH",
+                image: "https://images.unsplash.com/photo-1528795055-98e3b5e9e3d4?auto=format&fit=crop&w=600&q=80",
+                description: "Le confort ultime avec technologie thermo-régulante. Poches latérales profondes et stretch 4D premium pour une mobilité sans limite.",
+                specs: [
+                    "Technologie thermo-régulante",
+                    "Stretch 4D premium",
+                    "Poches latérales profondes",
+                    "Confort toute la journée",
+                    "Technologie anti-odeur"
+                ]
+            },
+            {
+                name: "Sneakers Iris Neon 2026",
+                category: "Chaussures",
+                price: "1200 DH",
+                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80",
+                description: "Design futuriste révolutionnaire avec LED intégrée. Semelle ergonomique premium ultra confortable et légère pour le style 2026.",
+                specs: [
+                    "LED intégrée programmable",
+                    "Semelle ergonomique premium",
+                    "Ultra légères (sous 300g)",
+                    "Batterie rechargeable USB",
+                    "Collection limitée à 500 paires"
+                ]
+            }
+        ];
+
+        // Splash screen animation
+        function createParticles() {
+            const logo = document.getElementById('irisLogo');
+            const rect = logo.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            const colors = ['#7c3aed', '#ec4899', '#06b6d4', '#f59e0b'];
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = centerX + 'px';
+                particle.style.top = centerY + 'px';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                const angle = (Math.random() * Math.PI * 2);
+                const distance = 200 + Math.random() * 300;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+                
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => particle.remove(), 1500);
+            }
+        }
+
+        // Trigger particles on load
+        window.addEventListener('load', () => {
+            setTimeout(createParticles, 500);
+        });
+
         // Initialize AOS
         AOS.init({
             duration: 1000,
@@ -1530,25 +1509,17 @@
 
         // Navbar scroll effect
         const navbar = document.getElementById('navbar');
-        let lastScroll = 0;
-
         window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > 100) {
+            if (window.pageYOffset > 100) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
-            
-            lastScroll = scrollTop;
 
-            // Scroll to top button
-            const scrollTop_ = document.getElementById('scrollTop');
-            if (scrollTop > 300) {
-                scrollTop_.classList.add('show');
+            if (window.pageYOffset > 300) {
+                document.getElementById('scrollTop').classList.add('show');
             } else {
-                scrollTop_.classList.remove('show');
+                document.getElementById('scrollTop').classList.remove('show');
             }
         });
 
@@ -1557,7 +1528,56 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Smooth scroll for navigation links
+        // Modal functions
+        function openModal(index) {
+            const product = products[index];
+            const modalContent = document.getElementById('modalContent');
+            
+            modalContent.innerHTML = `
+                <div class="modal-close" onclick="closeModal()">✕</div>
+                <div class="modal-grid">
+                    <div class="modal-image">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="modal-details">
+                        <div class="modal-category">${product.category}</div>
+                        <h2>${product.name}</h2>
+                        <p class="modal-description">${product.description}</p>
+                        
+                        <ul class="modal-specs">
+                            ${product.specs.map(spec => `<li>${spec}</li>`).join('')}
+                        </ul>
+                        
+                        <div class="modal-price">${product.price}</div>
+                        
+                        <div class="modal-buttons">
+                            <button class="modal-btn buy" onclick="buyProduct('${product.name}', '${product.price}')">
+                                <i class="fas fa-shopping-bag"></i> Commander
+                            </button>
+                            <button class="modal-btn close" onclick="closeModal()">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('productModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').classList.remove('active');
+        }
+
+        function buyProduct(name, price) {
+            const message = `Bonjour, je souhaite commander: ${name} - ${price}`;
+            window.open(`https://wa.me/212772727472?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // Close modal on overlay click
+        document.getElementById('productModal').addEventListener('click', (e) => {
+            if (e.target.id === 'productModal') closeModal();
+        });
+
+        // Smooth scroll for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
@@ -1571,7 +1591,7 @@
         // Mobile menu
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
-
+        
         hamburger.addEventListener('click', () => {
             navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
         });
@@ -1579,25 +1599,6 @@
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.style.display = 'none';
-            });
-        });
-
-        // Product button click
-        document.querySelectorAll('.product-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const productName = this.closest('.product-card').querySelector('.product-name').textContent;
-                const productPrice = this.closest('.product-card').querySelector('.product-price').textContent;
-                const message = `Bonjour, je souhaite commander: ${productName} - ${productPrice}`;
-                window.open(`https://wa.me/212772727472?text=${encodeURIComponent(message)}`, '_blank');
-            });
-        });
-
-        // Parallax effect on scroll
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            document.querySelectorAll('.floating-card').forEach((card, index) => {
-                card.style.transform = `translateY(${scrolled * 0.05 * (index + 1)}px)`;
             });
         });
     </script>
